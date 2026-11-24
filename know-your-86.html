@@ -1,0 +1,1760 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Know Your 86 &amp; BRZ</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+/* Layout: sticky chapter rail left, 68ch reading column, full-width illustration plates.
+   Palette: workshop manual — graphite ink on warm paper, hot-orange accent (the 86's launch colour),
+   steel blue reserved for drawn linework and secondary callouts. */
+:root{
+  --paper:#f6f3ee;
+  --surface:#fffdfa;
+  --ink:#1c1a18;
+  --ink-soft:#56514b;
+  --ink-faint:#8b847c;
+  --rule:#ddd6cb;
+  --rule-soft:#eae4da;
+  --accent:#c44410;
+  --accent-soft:#fbeadf;
+  --steel:#2f6b86;
+  --steel-soft:#e4eef2;
+  --warn:#9a6508;
+  --warn-soft:#fbf0d9;
+  --font-display:"Archivo","Helvetica Neue",Arial,sans-serif;
+  --font-body:"Source Serif 4",Georgia,"Times New Roman",serif;
+  --font-mono:"JetBrains Mono",ui-monospace,Menlo,Consolas,monospace;
+  color-scheme:light;
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --paper:#15171a; --surface:#1d2024; --ink:#eceae6; --ink-soft:#aeb3b8; --ink-faint:#7d848b;
+    --rule:#343a40; --rule-soft:#272c31; --accent:#ff7a45; --accent-soft:#33211a;
+    --steel:#78b5cf; --steel-soft:#1c2a31; --warn:#e0b060; --warn-soft:#2d2619;
+    color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --paper:#15171a; --surface:#1d2024; --ink:#eceae6; --ink-soft:#aeb3b8; --ink-faint:#7d848b;
+  --rule:#343a40; --rule-soft:#272c31; --accent:#ff7a45; --accent-soft:#33211a;
+  --steel:#78b5cf; --steel-soft:#1c2a31; --warn:#e0b060; --warn-soft:#2d2619;
+  color-scheme:dark;
+}
+
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{animation-duration:.001ms!important;transition-duration:.001ms!important}}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--font-body);font-size:1.0625rem;line-height:1.65}
+:focus-visible{outline:2.5px solid var(--accent);outline-offset:3px;border-radius:2px}
+
+/* shell */
+.shell{display:grid;grid-template-columns:230px minmax(0,1fr);max-width:1280px;margin:0 auto}
+.rail{position:sticky;top:0;align-self:start;height:100vh;overflow-y:auto;padding:34px 20px 40px 24px;border-right:1px solid var(--rule)}
+.rail-brand{font-family:var(--font-display);font-weight:800;font-size:.9rem;letter-spacing:.09em;text-transform:uppercase;line-height:1.3;margin:0 0 4px}
+.rail-brand span{color:var(--accent)}
+.rail-sub{font-size:.76rem;color:var(--ink-faint);font-family:var(--font-display);letter-spacing:.03em;margin:0 0 22px;line-height:1.45}
+.rail nav{display:flex;flex-direction:column;gap:1px}
+.rail a{display:flex;gap:9px;align-items:baseline;font-family:var(--font-display);font-size:.815rem;font-weight:500;line-height:1.35;color:var(--ink-soft);text-decoration:none;padding:6px 8px 6px 7px;border-radius:4px;border-left:2px solid transparent;transition:color .15s,background .15s}
+.rail a .n{font-family:var(--font-mono);font-size:.7rem;color:var(--ink-faint);font-variant-numeric:tabular-nums;flex:0 0 auto}
+.rail a:hover{color:var(--ink);background:var(--rule-soft)}
+.rail a.on{color:var(--accent);border-left-color:var(--accent);font-weight:700;background:var(--accent-soft)}
+.rail a.on .n{color:var(--accent)}
+
+main{padding:0 0 100px;min-width:0}
+.col{max-width:68ch;padding:0 28px}
+
+/* masthead */
+header.mast{padding:52px 28px 26px}
+.eyebrow{font-family:var(--font-display);font-size:.72rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--accent);margin:0 0 14px}
+h1{font-family:var(--font-display);font-weight:800;font-size:clamp(2.2rem,5.6vw,3.4rem);line-height:.98;letter-spacing:-.02em;margin:0 0 16px;text-wrap:balance}
+.standfirst{font-size:1.18rem;line-height:1.55;color:var(--ink-soft);max-width:60ch;margin:0 0 6px}
+.standfirst strong{color:var(--ink);font-weight:600}
+.mastplate{padding:0 28px;max-width:860px}
+.mastplate svg{display:block;width:100%;height:auto}
+.plate-cap{font-family:var(--font-display);font-size:.82rem;color:var(--ink-faint);line-height:1.5;margin:10px 0 0;max-width:62ch}
+.plate-cap b{color:var(--ink-soft);font-weight:600}
+.plate-joke{font-family:var(--font-body);font-style:italic;font-size:.88rem;color:var(--ink-faint);line-height:1.5;margin:8px 0 0;max-width:62ch;padding-left:11px;border-left:2px solid var(--rule)}
+
+/* spec card */
+.speccard{margin:30px 28px 0;border:1px solid var(--rule);background:var(--surface);border-radius:6px;overflow:hidden;max-width:68ch}
+.speccard h2{font-family:var(--font-display);font-size:.74rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;margin:0;padding:11px 16px;background:var(--ink);color:var(--paper)}
+.specgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(142px,1fr))}
+.specgrid div{padding:11px 16px;border-top:1px solid var(--rule-soft);border-right:1px solid var(--rule-soft)}
+.specgrid dt{font-family:var(--font-display);font-size:.68rem;font-weight:600;letter-spacing:.09em;text-transform:uppercase;color:var(--ink-faint);margin:0 0 3px}
+.specgrid dd{margin:0;font-family:var(--font-display);font-size:.98rem;font-weight:600;font-variant-numeric:tabular-nums;line-height:1.3}
+.specgrid dd small{font-weight:500;color:var(--ink-soft);font-size:.8rem}
+.specnote{padding:10px 16px;border-top:1px solid var(--rule-soft);font-size:.86rem;color:var(--ink-soft)}
+
+/* sections */
+section{padding-top:56px;scroll-margin-top:12px}
+.secnum{font-family:var(--font-mono);font-size:.76rem;font-weight:600;color:var(--accent);letter-spacing:.04em;margin:0 0 7px}
+h2.sec{font-family:var(--font-display);font-weight:800;font-size:clamp(1.55rem,3.4vw,2.1rem);line-height:1.08;letter-spacing:-.015em;margin:0 0 6px;text-wrap:balance}
+.sec-kicker{font-family:var(--font-display);font-size:.95rem;font-weight:500;color:var(--ink-faint);margin:0 0 22px;text-wrap:balance}
+h3{font-family:var(--font-display);font-weight:700;font-size:1.14rem;letter-spacing:-.005em;margin:32px 0 8px;text-wrap:balance}
+h4{font-family:var(--font-display);font-weight:700;font-size:.95rem;margin:22px 0 6px}
+p{margin:0 0 15px}
+a{color:var(--accent);text-underline-offset:2px}
+strong{font-weight:600}
+code{font-family:var(--font-mono);font-size:.86em;background:var(--rule-soft);padding:.1em .35em;border-radius:3px}
+ul,ol{margin:0 0 16px;padding-left:1.3em}
+li{margin-bottom:7px}
+li::marker{color:var(--ink-faint)}
+
+/* callouts */
+.box{border-radius:5px;padding:14px 17px;margin:20px 0;border-left:3px solid;font-size:1rem}
+.box .lab{font-family:var(--font-display);font-size:.68rem;font-weight:700;letter-spacing:.13em;text-transform:uppercase;display:block;margin-bottom:6px}
+.box p:last-child,.box ul:last-child,.box li:last-child{margin-bottom:0}
+.box.plain{background:var(--steel-soft);border-color:var(--steel)}
+.box.plain .lab{color:var(--steel)}
+.box.yours{background:var(--accent-soft);border-color:var(--accent)}
+.box.yours .lab{color:var(--accent)}
+.box.watch{background:var(--warn-soft);border-color:var(--warn)}
+.box.watch .lab{color:var(--warn)}
+
+/* figures */
+figure{margin:28px 0;max-width:100%}
+.figwrap{overflow-x:auto;border:1px solid var(--rule);background:var(--surface);border-radius:6px;padding:18px 16px}
+.plate{padding:22px 18px}
+figure svg{display:block;margin:0 auto;max-width:100%;height:auto}
+figcaption{font-family:var(--font-display);font-size:.8rem;color:var(--ink-faint);margin-top:9px;line-height:1.45}
+figcaption b{color:var(--ink-soft);font-weight:600}
+.s-fill{fill:var(--surface)}
+.s-line{stroke:var(--ink);fill:none}
+.s-soft{stroke:var(--rule);fill:none}
+.s-steelline{stroke:var(--steel);fill:none}
+.s-steelfill{fill:var(--steel-soft);stroke:var(--steel)}
+.s-accline{stroke:var(--accent);fill:none}
+.s-accfill{fill:var(--accent)}
+.s-inkfill{fill:var(--ink)}
+.s-grey{fill:var(--rule-soft);stroke:var(--rule)}
+.s-metal{fill:var(--rule-soft);stroke:var(--ink-soft)}
+.s-shade{fill:var(--accent-soft);stroke:none}
+.s-lead{stroke:var(--ink-faint);fill:none;stroke-width:.9}
+text{font-family:var(--font-display);fill:var(--ink)}
+.t-lab{font-size:11px;font-weight:600;fill:var(--ink)}
+.t-small{font-size:9.5px;font-weight:500;fill:var(--ink-faint)}
+.t-num{font-size:10px;font-weight:600;fill:var(--ink-faint);font-variant-numeric:tabular-nums}
+.t-acc{font-size:10.5px;font-weight:700;fill:var(--accent)}
+.t-steel{font-size:10.5px;font-weight:700;fill:var(--steel)}
+.t-big{font-size:15px;font-weight:800;fill:var(--ink)}
+.t-plate{font-size:10.5px;font-weight:600;fill:var(--ink)}
+
+/* four-stroke row */
+.strokes{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+@media (max-width:620px){.strokes{grid-template-columns:repeat(2,1fr)}}
+.stroke{border:1px solid var(--rule);background:var(--surface);border-radius:5px;padding:12px 10px}
+.stroke h5{font-family:var(--font-display);font-size:.82rem;font-weight:700;margin:0 0 2px}
+.stroke h5 b{color:var(--accent);font-family:var(--font-mono);font-size:.74rem;margin-right:5px}
+.stroke p{font-size:.84rem;line-height:1.45;color:var(--ink-soft);margin:6px 0 0}
+
+/* tables */
+.tablewrap{overflow-x:auto;margin:22px 0;border:1px solid var(--rule);border-radius:6px;background:var(--surface)}
+table{border-collapse:collapse;width:100%;font-size:.92rem;min-width:560px}
+th{font-family:var(--font-display);font-size:.68rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;text-align:left;padding:10px 13px;background:var(--rule-soft);color:var(--ink-soft);border-bottom:1px solid var(--rule);white-space:nowrap}
+td{padding:10px 13px;border-bottom:1px solid var(--rule-soft);vertical-align:top;line-height:1.5}
+tr:last-child td{border-bottom:0}
+td:first-child{font-family:var(--font-display);font-weight:600;font-size:.9rem}
+td .spec{font-family:var(--font-mono);font-size:.82rem;color:var(--accent);font-weight:600}
+
+/* checklists / cards */
+.checks{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:12px;margin:22px 0}
+.check{border:1px solid var(--rule);border-radius:5px;background:var(--surface);padding:13px 15px}
+.check .freq{font-family:var(--font-display);font-size:.66rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--accent);margin:0 0 7px}
+.check ul{margin:0;padding-left:1.15em;font-size:.9rem}
+.check li{margin-bottom:5px}
+
+/* twins split */
+.twins{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:22px 0}
+@media (max-width:620px){.twins{grid-template-columns:1fr}}
+.twin{border:1px solid var(--rule);border-radius:5px;background:var(--surface);padding:14px 16px}
+.twin h4{margin:0 0 8px;font-size:.95rem}
+.twin h4 em{font-style:normal;font-family:var(--font-mono);font-size:.74rem;color:var(--accent);margin-left:6px}
+.twin ul{margin:0;padding-left:1.15em;font-size:.89rem}
+.twin li{margin-bottom:5px}
+
+/* glossary */
+.gsearch{width:100%;max-width:340px;font-family:var(--font-display);font-size:.94rem;padding:9px 13px;border:1px solid var(--rule);border-radius:5px;background:var(--surface);color:var(--ink);margin:4px 0 18px}
+.gsearch::placeholder{color:var(--ink-faint)}
+.glist{display:grid;border-top:1px solid var(--rule-soft)}
+.gitem{display:grid;grid-template-columns:168px minmax(0,1fr);gap:16px;padding:11px 2px;border-bottom:1px solid var(--rule-soft)}
+.gitem dt{font-family:var(--font-display);font-weight:700;font-size:.9rem;line-height:1.35}
+.gitem dd{margin:0;font-size:.95rem;color:var(--ink-soft);line-height:1.5}
+@media (max-width:600px){.gitem{grid-template-columns:1fr;gap:2px}}
+.gempty{padding:16px 2px;color:var(--ink-faint);font-family:var(--font-display);font-size:.9rem}
+
+.nextgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(215px,1fr));gap:12px;margin:22px 0}
+.nextcard{border:1px solid var(--rule);border-radius:5px;padding:14px 16px;background:var(--surface)}
+.nextcard h4{margin:0 0 5px;font-size:.92rem}
+.nextcard p{font-size:.88rem;color:var(--ink-soft);margin:0;line-height:1.5}
+footer{margin-top:64px;border-top:1px solid var(--rule);padding:26px 28px 0;font-size:.86rem;color:var(--ink-faint);max-width:68ch}
+footer p{margin:0 0 9px}
+
+.mobnav{display:none}
+@media (max-width:900px){
+  .shell{grid-template-columns:1fr}
+  .rail{display:none}
+  .mobnav{display:block;position:sticky;top:0;z-index:20;background:var(--paper);border-bottom:1px solid var(--rule);padding:9px 0}
+  .mobnav .strip{display:flex;gap:7px;overflow-x:auto;padding:0 16px;scrollbar-width:none}
+  .mobnav .strip::-webkit-scrollbar{display:none}
+  .mobnav a{flex:0 0 auto;font-family:var(--font-display);font-size:.78rem;font-weight:600;padding:5px 11px;border:1px solid var(--rule);border-radius:100px;color:var(--ink-soft);text-decoration:none;white-space:nowrap;background:var(--surface)}
+  .mobnav a.on{background:var(--accent);border-color:var(--accent);color:#fff}
+  header.mast{padding:34px 20px 22px}
+  .mastplate{padding:0 20px}
+  .col{padding:0 20px}
+  .speccard{margin:26px 20px 0}
+  footer{padding:26px 20px 0}
+  body{font-size:1.02rem}
+}
+</style>
+</head>
+<body>
+
+<div class="mobnav"><div class="strip" id="mobstrip"></div></div>
+
+<div class="shell">
+
+  <aside class="rail">
+    <p class="rail-brand">Know Your <span>86 &amp; BRZ</span></p>
+    <p class="rail-sub">Car tech from zero —<br>86 · GT86 · FR-S · BRZ</p>
+    <nav id="railnav"></nav>
+  </aside>
+
+  <main>
+    <header class="mast">
+      <p class="eyebrow">A beginner's guide to how cars work</p>
+      <h1>Know Your 86 &amp; BRZ</h1>
+      <p class="standfirst">Loving cars and understanding cars are two different skills. This is the second one, built around <strong>one car with four badges</strong>: the Toyota 86, Toyota GT86, Scion FR-S and Subaru BRZ. Every idea here is general and applies to any petrol car — but every example is yours, so the knowledge has somewhere to stick.</p>
+    </header>
+
+    <div class="mastplate">
+      <!-- ILLUSTRATION: packaging cutaway -->
+      <svg viewBox="0 0 700 332" role="img" aria-label="Cutaway side view showing where the engine, gearbox, driveshaft, differential and fuel tank sit, and the height of the centre of gravity">
+  <!-- BODY -->
+  <path d="M24,202
+           C19,178 28,152 46,142
+           C84,131 136,123 188,118
+           C208,116 224,115 232,114
+           L302,62
+           C326,58 360,58 384,65
+           C416,78 454,94 486,104
+           C524,110 570,112 598,110
+           C612,109 622,107 627,104
+           C633,120 633,144 627,159
+           C622,172 610,181 592,185
+           L584,185 L584,207
+           A54,54 0 0 0 476,207
+           L476,225 L210,225 L210,207
+           A52,52 0 0 0 106,207
+           L106,210
+           C74,211 44,206 24,202 Z"
+        fill="var(--surface)" stroke="var(--ink)" stroke-width="2.2" stroke-linejoin="round"/>
+
+  <!-- glass -->
+  <path d="M242,117 L306,67 L376,67 L376,113 Z" fill="var(--steel-soft)" stroke="var(--steel)" stroke-width="1.2" opacity="0.5"/>
+  <path d="M382,69 L424,88 L382,111 Z" fill="var(--steel-soft)" stroke="var(--steel)" stroke-width="1.2" opacity="0.5"/>
+
+  <!-- light body detail -->
+  <path d="M54,146 C58,166 58,186 53,202" fill="none" stroke="var(--rule)" stroke-width="1.4"/>
+  <path d="M56,146 C80,134 108,127 136,123 L138,140 C112,144 86,151 66,161 Z"
+        fill="var(--rule-soft)" stroke="var(--ink-soft)" stroke-width="1.2"/>
+  <path d="M28,192 C46,189 64,186 80,182" fill="none" stroke="var(--rule)" stroke-width="1.4"/>
+  <path d="M592,117 L622,119 L624,136 L594,133 Z" fill="var(--rule-soft)" stroke="var(--ink-soft)" stroke-width="1.2"/>
+  <path d="M236,117 L230,222" fill="none" stroke="var(--rule)" stroke-width="1.3"/>
+  <path d="M388,111 L396,222" fill="none" stroke="var(--rule)" stroke-width="1.3"/>
+  <path d="M248,114 C240,111 239,104 246,102 L258,103 C262,107 260,114 254,115 Z"
+        fill="var(--rule-soft)" stroke="var(--ink-soft)" stroke-width="1.3"/>
+  <path d="M215,216 L471,216" fill="none" stroke="var(--rule)" stroke-width="1.4"/>
+  <path d="M100,205 A55,55 0 0 1 210,205" fill="none" stroke="var(--rule)" stroke-width="1.4"/>
+  <path d="M474,205 A57,57 0 0 1 588,205" fill="none" stroke="var(--rule)" stroke-width="1.4"/>
+  <ellipse cx="574" cy="191" rx="8" ry="4" fill="var(--rule-soft)" stroke="var(--ink-soft)" stroke-width="1.2"/>
+
+  <!-- WHEELS -->
+  <g>
+    <circle cx="155" cy="204" r="46" fill="var(--paper)" stroke="var(--ink)" stroke-width="2.2"/>
+    <circle cx="155" cy="204" r="31" fill="var(--rule-soft)" stroke="var(--ink-soft)" stroke-width="1.4"/>
+    <g stroke="var(--ink-soft)" stroke-width="2" stroke-linecap="round" opacity="0.8">
+      <line x1="155" y1="197" x2="155" y2="179"/><line x1="161" y1="199" x2="170" y2="185"/>
+      <line x1="166" y1="204" x2="182" y2="204"/><line x1="161" y1="209" x2="170" y2="223"/>
+      <line x1="155" y1="211" x2="155" y2="229"/><line x1="149" y1="209" x2="140" y2="223"/>
+      <line x1="144" y1="204" x2="128" y2="204"/><line x1="149" y1="199" x2="140" y2="185"/>
+    </g>
+    <circle cx="155" cy="204" r="7" fill="var(--ink-soft)"/>
+  </g>
+  <g>
+    <circle cx="531" cy="204" r="46" fill="var(--paper)" stroke="var(--ink)" stroke-width="2.2"/>
+    <circle cx="531" cy="204" r="31" fill="var(--rule-soft)" stroke="var(--ink-soft)" stroke-width="1.4"/>
+    <g stroke="var(--ink-soft)" stroke-width="2" stroke-linecap="round" opacity="0.8">
+      <line x1="531" y1="197" x2="531" y2="179"/><line x1="537" y1="199" x2="546" y2="185"/>
+      <line x1="542" y1="204" x2="558" y2="204"/><line x1="537" y1="209" x2="546" y2="223"/>
+      <line x1="531" y1="211" x2="531" y2="229"/><line x1="525" y1="209" x2="516" y2="223"/>
+      <line x1="520" y1="204" x2="504" y2="204"/><line x1="525" y1="199" x2="516" y2="185"/>
+    </g>
+  </g>
+
+  <!-- DRIVER -->
+  <g opacity="0.3">
+    <g stroke="var(--ink-soft)" stroke-width="8" fill="none" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M362,156 L344,124"/>
+      <path d="M362,156 L322,162"/>
+      <path d="M322,162 L304,186"/>
+      <path d="M304,186 L293,189"/>
+      <path d="M348,130 L324,142"/>
+    </g>
+    <circle cx="340" cy="110" r="12" fill="var(--ink-soft)"/>
+    <ellipse cx="317" cy="146" rx="3" ry="11" fill="none" stroke="var(--ink-soft)" stroke-width="2.6" transform="rotate(-24 317 146)"/>
+  </g>
+
+  <!-- FUEL TANK -->
+  <path d="M426,166 L488,166 L488,190 L434,190 Z" fill="var(--rule-soft)" stroke="var(--ink-soft)" stroke-width="1.5"/>
+
+  <!-- ENGINE -->
+  <g>
+    <rect x="212" y="166" width="36" height="38" rx="3" fill="var(--steel)" opacity="0.16"/>
+    <rect x="212" y="166" width="36" height="38" rx="3" fill="none" stroke="var(--steel)" stroke-width="1.9"/>
+    <rect x="180" y="173" width="34" height="23" rx="3" fill="var(--steel)" opacity="0.16"/>
+    <rect x="180" y="173" width="34" height="23" rx="3" fill="none" stroke="var(--steel)" stroke-width="1.9"/>
+    <rect x="246" y="173" width="34" height="23" rx="3" fill="var(--steel)" opacity="0.16"/>
+    <rect x="246" y="173" width="34" height="23" rx="3" fill="none" stroke="var(--steel)" stroke-width="1.9"/>
+    <rect x="186" y="179" width="12" height="11" rx="2" fill="var(--steel)"/>
+    <rect x="262" y="179" width="12" height="11" rx="2" fill="var(--steel)"/>
+    <circle cx="230" cy="185" r="6" fill="var(--steel)"/>
+  </g>
+
+  <!-- GEARBOX -->
+  <path d="M280,172 L330,178 L362,190 L362,204 L280,204 Z" fill="var(--steel)" opacity="0.16"/>
+  <path d="M280,172 L330,178 L362,190 L362,204 L280,204 Z" fill="none" stroke="var(--steel)" stroke-width="1.9"/>
+
+  <!-- DRIVESHAFT + DIFF -->
+  <line x1="362" y1="199" x2="514" y2="199" stroke="var(--accent)" stroke-width="5.5" stroke-linecap="round"/>
+  <circle cx="404" cy="199" r="5" fill="var(--accent)"/>
+  <circle cx="470" cy="199" r="5" fill="var(--accent)"/>
+  <circle cx="531" cy="199" r="18" fill="var(--accent)" opacity="0.22"/>
+  <circle cx="531" cy="199" r="18" fill="none" stroke="var(--accent)" stroke-width="2"/>
+
+  <!-- CoG -->
+  <line x1="338" y1="183" x2="338" y2="264" stroke="var(--ink)" stroke-width="1.1" stroke-dasharray="4 3"/>
+  <g transform="translate(338,183)">
+    <circle r="17" fill="var(--surface)" opacity="0.95"/>
+    <circle r="11" fill="var(--surface)" stroke="var(--ink)" stroke-width="1.6"/>
+    <path d="M0,-11 A11,11 0 0 1 11,0 L0,0 Z" fill="var(--ink)"/>
+    <path d="M0,11 A11,11 0 0 1 -11,0 L0,0 Z" fill="var(--ink)"/>
+  </g>
+
+  <line x1="10" y1="250" x2="690" y2="250" stroke="var(--ink)" stroke-width="1.8"/>
+
+  <!-- CALLOUTS -->
+  <g font-size="11" font-weight="700">
+    <line x1="230" y1="166" x2="230" y2="150" stroke="var(--ink)" stroke-width="1.1"/>
+    <circle cx="230" cy="140" r="11" fill="var(--ink)"/><text x="230" y="144" style="fill:var(--paper)" text-anchor="middle">1</text>
+    <line x1="300" y1="176" x2="300" y2="158" stroke="var(--ink)" stroke-width="1.1"/>
+    <circle cx="300" cy="148" r="11" fill="var(--ink)"/><text x="300" y="152" style="fill:var(--paper)" text-anchor="middle">2</text>
+    <circle cx="437" cy="221" r="11" fill="var(--ink)"/><text x="437" y="225" style="fill:var(--paper)" text-anchor="middle">3</text>
+    <line x1="437" y1="210" x2="437" y2="204" stroke="var(--ink)" stroke-width="1.1"/>
+    <circle cx="576" cy="166" r="11" fill="var(--ink)"/><text x="576" y="170" style="fill:var(--paper)" text-anchor="middle">4</text>
+    <line x1="569" y1="173" x2="547" y2="190" stroke="var(--ink)" stroke-width="1.1"/>
+    <circle cx="455" cy="137" r="11" fill="var(--ink)"/><text x="455" y="141" style="fill:var(--paper)" text-anchor="middle">5</text>
+    <line x1="455" y1="148" x2="455" y2="166" stroke="var(--ink)" stroke-width="1.1"/>
+  </g>
+
+  <g>
+    <line x1="338" y1="250" x2="338" y2="266" stroke="var(--ink)" stroke-width="1.1" stroke-dasharray="4 3"/>
+    <text x="338" y="279" font-size="10.5" font-weight="700" text-anchor="middle">centre of gravity, about 460 mm up</text>
+    <line x1="155" y1="296" x2="531" y2="296" stroke="var(--steel)" stroke-width="1.1"/>
+    <line x1="155" y1="292" x2="155" y2="300" stroke="var(--steel)" stroke-width="1.1"/>
+    <line x1="531" y1="292" x2="531" y2="300" stroke="var(--steel)" stroke-width="1.1"/>
+    <text x="343" y="293" font-size="10" font-weight="600" style="fill:var(--steel)" text-anchor="middle">wheelbase 2,570 mm</text>
+    <g font-size="10.5" font-weight="700">
+      <text x="22" y="322" style="fill:var(--steel)">1 flat-four engine</text>
+      <text x="150" y="322" style="fill:var(--steel)">2 gearbox</text>
+      <text x="246" y="322" style="fill:var(--accent)">3 driveshaft</text>
+      <text x="340" y="322" style="fill:var(--accent)">4 limited-slip differential</text>
+      <text x="500" y="322" style="fill:var(--ink-soft)">5 fuel tank</text>
+    </g>
+  </g>
+</svg>
+      <p class="plate-cap"><b>Where everything actually sits.</b> The flat engine is mounted low and set back behind the front axle; that, more than anything else, is why this car behaves the way it does. Drawn to scale from the published dimensions.</p>
+      <p class="plate-joke">Every dimension here is correct to the millimetre. The curves between them are correct to roughly the nearest &ldquo;yeah, close enough&rdquo;. Do not hand this to a panel beater.</p>
+    </div>
+
+    <div class="speccard">
+      <h2>The car on paper</h2>
+      <dl class="specgrid">
+        <div><dt>Engine</dt><dd>FA20 <small>/ 4U-GSE</small></dd></div>
+        <div><dt>Layout</dt><dd>Flat-four <small>boxer</small></dd></div>
+        <div><dt>Capacity</dt><dd>1,998 cc</dd></div>
+        <div><dt>Bore × stroke</dt><dd>86 × 86 mm</dd></div>
+        <div><dt>Compression</dt><dd>12.5:1</dd></div>
+        <div><dt>Power</dt><dd>147 kW <small>(200 hp) @ 7,000</small></dd></div>
+        <div><dt>Torque</dt><dd>205 Nm <small>@ 6,400–6,600</small></dd></div>
+        <div><dt>Fuel</dt><dd>98 RON <small>premium</small></dd></div>
+        <div><dt>Drive</dt><dd>Rear wheels</dd></div>
+        <div><dt>Gearbox</dt><dd>6-speed <small>man. or auto</small></dd></div>
+        <div><dt>Kerb weight</dt><dd>~1,240 kg <small>manual</small></dd></div>
+        <div><dt>Chassis code</dt><dd>ZN6 <small>/ ZC6 (BRZ)</small></dd></div>
+      </dl>
+      <p class="specnote">These figures are identical across all four badges. The engine, gearbox, differential, brakes and body structure are the same parts, which is why advice for one car almost always applies to the others — and why searching all four names finds four times the information.</p>
+    </div>
+
+    <div class="col">
+
+      <!-- ============ 1 ============ -->
+      <section id="twins" data-nav="One car, four badges">
+        <p class="secnum">01</p>
+        <h2 class="sec">One car, four badges</h2>
+        <p class="sec-kicker">If you drive a BRZ, everything in this guide is about your car too. Here's exactly where the two diverge.</p>
+
+        <p>In 2008 Toyota bought a stake in Subaru's parent company, and the two then co-developed this car: Toyota led the design and the injection system, Subaru engineered the engine and built the cars. The result was sold under four names, and people call them the "Toyobaru twins".</p>
+
+        <div class="twins">
+          <div class="twin">
+            <h4>Toyota <em>ZN6</em></h4>
+            <ul>
+              <li><strong>86</strong> — Japan, Australia, New Zealand and most markets</li>
+              <li><strong>GT86</strong> — Europe and the UK</li>
+              <li><strong>Scion FR-S</strong> — North America, 2013–2016, then renamed Toyota 86</li>
+              <li>Named after the 1983–87 Corolla <strong>AE86</strong></li>
+            </ul>
+          </div>
+          <div class="twin">
+            <h4>Subaru <em>ZC6</em></h4>
+            <ul>
+              <li><strong>BRZ</strong> — all markets</li>
+              <li>Built by Subaru in Gunma, same line as the Toyotas</li>
+              <li>Same FA20 engine, gearbox, differential and brakes</li>
+              <li>Generally arrived with more standard equipment</li>
+            </ul>
+          </div>
+        </div>
+
+        <h3>What is genuinely the same</h3>
+        <p>The engine, the gearbox, the differential, the brakes, the body structure and the suspension design. Reviews at launch described them as sharing engine, chassis and brakes, with the main differences being appearance inside and out. So every section of this guide — the engine, the fluids, the alignment angles, the maintenance habits — applies to a BRZ exactly as it does to an 86.</p>
+
+        <h3>What actually differs</h3>
+        <ul>
+          <li><strong>Suspension tune.</strong> This is the real one. Subaru fitted stiffer front springs and softer rear settings, and tuned its dampers differently. Australian reporting at launch put the first-generation difference at roughly 10% stiffer front coil springs in the BRZ, and described the on-road difference as subtle rather than significant. The intended effect was a BRZ that leans a fraction less and feels slightly more stable, with a mild bias toward understeer, while the Toyota is a touch more willing to rotate.</li>
+          <li><strong>Standard equipment.</strong> It varied by market, but the BRZ typically launched with more kit: 17-inch alloys where a base 86 had 16s, dual-zone climate control against the Toyota's manual air conditioning, a multi-function steering wheel, push-button start, and an information display.</li>
+          <li><strong>Front bumper, lights, badges and wheel designs.</strong> Cosmetic.</li>
+          <li><strong>Who you talk to.</strong> Warranty, recalls and parts go through Subaru rather than Toyota — which matters a lot for the recall in section 13, because the two brands ran separate campaigns with different build-date windows.</li>
+        </ul>
+
+        <div class="box plain">
+          <span class="lab">How to read the rest of this guide</span>
+          <p>Where something applies to every version, it's written plainly. Where a car-specific detail matters, there's an orange <strong>On your car</strong> box. Where the Toyota and the Subaru genuinely differ, the box says so. One warning on researching your own car: be careful not to mix up the generations. The 2022-onward <strong>GR86 and second-generation BRZ</strong> use a bigger 2.4-litre FA24 engine and different figures. Specifications you find online for those cars do not apply to a first-generation car.</p>
+        </div>
+      </section>
+
+      <!-- ============ 2 ============ -->
+      <section id="big-picture" data-nav="The big picture">
+        <p class="secnum">02</p>
+        <h2 class="sec">The big picture</h2>
+        <p class="sec-kicker">Petrol goes in one end, rotation comes out the other. Everything else is management.</p>
+
+        <p>Almost every mechanical part of your car exists to do one of three jobs: <strong>make rotation</strong>, <strong>manage rotation</strong>, or <strong>stop rotation</strong>. The engine makes it. The clutch, gearbox, driveshaft and differential manage it. The brakes and tyres stop it. Hold onto that and the rest of this guide is just detail.</p>
+
+        <figure>
+          <div class="figwrap">
+            <svg viewBox="0 0 700 150" role="img" aria-label="Power flows from engine to clutch to gearbox to driveshaft to differential to rear wheels">
+              <defs>
+                <marker id="ar" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+                  <path d="M0,1 L9,5 L0,9" fill="none" stroke="var(--accent)" stroke-width="1.6"/>
+                </marker>
+              </defs>
+              <rect x="6" y="38" width="96" height="46" rx="4" class="s-steelfill" stroke-width="1.2"/>
+              <text class="t-lab" x="54" y="58" text-anchor="middle">Engine</text>
+              <text class="t-small" x="54" y="72" text-anchor="middle">makes rotation</text>
+              <line x1="104" y1="61" x2="122" y2="61" stroke="var(--accent)" stroke-width="1.6" marker-end="url(#ar)"/>
+              <rect x="124" y="38" width="86" height="46" rx="4" class="s-grey" stroke-width="1.2"/>
+              <text class="t-lab" x="167" y="58" text-anchor="middle">Clutch</text>
+              <text class="t-small" x="167" y="72" text-anchor="middle">connect / cut</text>
+              <line x1="212" y1="61" x2="230" y2="61" stroke="var(--accent)" stroke-width="1.6" marker-end="url(#ar)"/>
+              <rect x="232" y="38" width="96" height="46" rx="4" class="s-grey" stroke-width="1.2"/>
+              <text class="t-lab" x="280" y="58" text-anchor="middle">Gearbox</text>
+              <text class="t-small" x="280" y="72" text-anchor="middle">trade speed/force</text>
+              <line x1="330" y1="61" x2="348" y2="61" stroke="var(--accent)" stroke-width="1.6" marker-end="url(#ar)"/>
+              <rect x="350" y="38" width="96" height="46" rx="4" class="s-grey" stroke-width="1.2"/>
+              <text class="t-lab" x="398" y="58" text-anchor="middle">Driveshaft</text>
+              <text class="t-small" x="398" y="72" text-anchor="middle">carries it back</text>
+              <line x1="448" y1="61" x2="466" y2="61" stroke="var(--accent)" stroke-width="1.6" marker-end="url(#ar)"/>
+              <rect x="468" y="38" width="100" height="46" rx="4" class="s-grey" stroke-width="1.2"/>
+              <text class="t-lab" x="518" y="58" text-anchor="middle">Differential</text>
+              <text class="t-small" x="518" y="72" text-anchor="middle">splits left/right</text>
+              <line x1="570" y1="61" x2="588" y2="61" stroke="var(--accent)" stroke-width="1.6" marker-end="url(#ar)"/>
+              <rect x="590" y="38" width="104" height="46" rx="4" class="s-steelfill" stroke-width="1.2"/>
+              <text class="t-lab" x="642" y="58" text-anchor="middle">Tyres</text>
+              <text class="t-small" x="642" y="72" text-anchor="middle">push the road</text>
+              <text class="t-acc" x="6" y="118">Fuel + air in</text>
+              <text class="t-acc" x="694" y="118" text-anchor="end">Car moves</text>
+              <line x1="6" y1="128" x2="694" y2="128" class="s-soft" stroke-width="1" stroke-dasharray="3 3"/>
+            </svg>
+          </div>
+          <figcaption><b>The drivetrain.</b> Each box only has to solve its own problem. When something feels wrong with your car, working out which box owns the symptom is most of the diagnosis.</figcaption>
+        </figure>
+
+        <div class="box plain">
+          <span class="lab">In plain English</span>
+          <p>An engine is a machine that turns small explosions into a spinning shaft. It cannot do anything else. It can't start from rest, it can't reverse, it can't idle and move at the same time. Every other part in the chain exists to cover for one of those limitations.</p>
+        </div>
+      </section>
+
+      <!-- ============ 3 ============ -->
+      <section id="engine" data-nav="The engine">
+        <p class="secnum">03</p>
+        <h2 class="sec">The engine</h2>
+        <p class="sec-kicker">Four pistons, lying on their sides, doing the same four jobs forever.</p>
+
+        <h3>Inside one cylinder</h3>
+        <p>Before the cycle, the hardware. This is a cut-through of a single cylinder, which is the basic unit your engine has four of.</p>
+
+        <figure>
+          <div class="figwrap plate">
+            <!-- ILLUSTRATION: cylinder cutaway -->
+            <svg viewBox="0 0 580 336" role="img" aria-label="Cutaway of one engine cylinder showing camshafts, valves, spark plug, combustion chamber, piston, connecting rod and crankshaft, with bore and stroke dimensioned">
+              <rect x="160" y="26" width="260" height="86" class="s-grey" stroke-width="1.4"/>
+              <rect x="160" y="112" width="260" height="123" class="s-grey" stroke-width="1.4"/>
+              <rect x="216" y="112" width="148" height="123" class="s-fill" stroke="var(--ink-soft)" stroke-width="1.4"/>
+              <path d="M222,112 Q290,58 358,112 Z" class="s-shade"/>
+              <path d="M222,112 Q290,58 358,112" class="s-line" stroke-width="1.4"/>
+
+              <path d="M160,68 L216,68 L242,100" class="s-steelline" stroke-width="1.5"/>
+              <path d="M160,90 L222,90 L254,104" class="s-steelline" stroke-width="1.5"/>
+              <path d="M420,68 L364,68 L338,100" class="s-accline" stroke-width="1.5"/>
+              <path d="M420,90 L358,90 L326,104" class="s-accline" stroke-width="1.5"/>
+
+              <line x1="248" y1="100" x2="236" y2="40" class="s-line" stroke-width="3.4"/>
+              <ellipse cx="249" cy="101" rx="15" ry="4.5" class="s-inkfill"/>
+              <line x1="332" y1="100" x2="344" y2="40" class="s-line" stroke-width="3.4"/>
+              <ellipse cx="331" cy="101" rx="15" ry="4.5" class="s-inkfill"/>
+              <circle cx="234" cy="32" r="14" class="s-metal" stroke-width="1.4"/>
+              <path d="M234,32 L222,20 Q232,12 244,22 Z" class="s-inkfill"/>
+              <circle cx="346" cy="32" r="14" class="s-metal" stroke-width="1.4"/>
+              <path d="M346,32 L358,20 Q348,12 336,22 Z" class="s-inkfill"/>
+              <rect x="284" y="34" width="12" height="44" rx="2" class="s-accfill"/>
+              <path d="M290,78 l-5,10 l10,0 z" class="s-accfill"/>
+
+              <line x1="216" y1="130" x2="364" y2="130" class="s-soft" stroke-width="1.2" stroke-dasharray="4 3"/>
+              <line x1="216" y1="216" x2="364" y2="216" class="s-soft" stroke-width="1.2" stroke-dasharray="4 3"/>
+              <text class="t-small" x="368" y="226">bottom of stroke</text>
+
+              <rect x="218" y="146" width="144" height="40" rx="3" class="s-metal" stroke-width="1.6"/>
+              <line x1="218" y1="154" x2="362" y2="154" class="s-soft" stroke-width="1.6"/>
+              <line x1="218" y1="161" x2="362" y2="161" class="s-soft" stroke-width="1.6"/>
+              <circle cx="290" cy="176" r="7" class="s-fill" stroke="var(--ink-soft)" stroke-width="1.4"/>
+              <path d="M284,176 L316,272 L328,268 L296,174 Z" class="s-metal" stroke-width="1.5"/>
+              <circle cx="290" cy="262" r="46" class="s-fill" stroke="var(--ink-soft)" stroke-width="1.5" stroke-dasharray="4 3"/>
+              <circle cx="290" cy="262" r="17" class="s-metal" stroke-width="1.6"/>
+              <circle cx="322" cy="270" r="11" class="s-metal" stroke-width="1.6"/>
+              <path d="M290,262 L322,270" class="s-line" stroke-width="2"/>
+              <path d="M290,206 A56,56 0 0 1 346,262" class="s-accline" stroke-width="1.8"/>
+              <path d="M346,262 l-6,-7 l12,0 z" class="s-accfill"/>
+
+              <path d="M202,130 L202,216" class="s-accline" stroke-width="1.4"/>
+              <path d="M198,130 L206,130 M198,216 L206,216" class="s-accline" stroke-width="1.4"/>
+              <path d="M198,173 L140,173" class="s-lead"/>
+              <text class="t-acc" x="136" y="170" text-anchor="end">stroke</text>
+              <text class="t-acc" x="136" y="182" text-anchor="end">86 mm</text>
+              <path d="M216,204 L364,204" class="s-steelline" stroke-width="1.3"/>
+              <path d="M216,200 L216,208 M364,200 L364,208" class="s-steelline" stroke-width="1.3"/>
+              <text class="t-steel" x="290" y="224" text-anchor="middle">bore · 86 mm</text>
+              <path d="M160,79 L136,79" class="s-lead"/>
+              <text class="t-steel" x="132" y="76" text-anchor="end">intake port</text>
+              <text class="t-small" x="132" y="88" text-anchor="end">air + fuel in</text>
+
+              <g>
+                <path d="M360,32 L452,32" class="s-lead"/><text class="t-plate" x="456" y="35">camshaft</text>
+                <path d="M296,50 L452,50" class="s-lead"/><text class="t-plate" x="456" y="53">spark plug</text>
+                <path d="M348,72 L452,72" class="s-lead"/><text class="t-plate" x="456" y="75">valve</text>
+                <path d="M420,90 L452,90" class="s-lead"/><text class="t-acc" x="456" y="93">exhaust port</text>
+                <path d="M310,96 L452,108" class="s-lead"/><text class="t-plate" x="456" y="111">combustion chamber</text>
+                <path d="M420,140 L452,140" class="s-lead"/><text class="t-plate" x="456" y="143">cylinder wall</text>
+                <path d="M362,166 L452,170" class="s-lead"/><text class="t-plate" x="456" y="173">piston</text>
+                <path d="M324,224 L452,216" class="s-lead"/><text class="t-plate" x="456" y="219">connecting rod</text>
+                <path d="M334,268 L452,262" class="s-lead"/><text class="t-plate" x="456" y="265">crankshaft</text>
+              </g>
+              <text class="t-small" x="290" y="326" text-anchor="middle">The piston's up-and-down becomes the crankshaft's round-and-round. That is the whole trick.</text>
+            </svg>
+          </div>
+          <figcaption><b>One cylinder, cut in half.</b> The piston never rotates; the crankshaft's offset journal converts its straight-line travel into rotation, the same way your leg drives a bicycle pedal.</figcaption>
+        </figure>
+
+        <h3>The four-stroke cycle</h3>
+        <p>A "stroke" is one full travel of that piston. Your engine takes <strong>four strokes</strong> to complete one cycle of work, which is why each cylinder only produces power a quarter of the time.</p>
+
+        <figure>
+          <div class="strokes">
+            <div class="stroke">
+              <h5><b>1</b>Intake</h5>
+              <svg viewBox="0 0 90 120" role="img" aria-label="Intake stroke: inlet valve open, piston moving down, drawing in air and fuel">
+                <rect x="20" y="8" width="50" height="104" rx="3" class="s-grey" stroke-width="1.2"/>
+                <rect x="23" y="74" width="44" height="16" rx="2" class="s-inkfill"/>
+                <line x1="45" y1="90" x2="45" y2="110" class="s-line" stroke-width="2.5"/>
+                <line x1="31" y1="8" x2="31" y2="26" class="s-steelline" stroke-width="3"/>
+                <line x1="59" y1="8" x2="59" y2="16" class="s-line" stroke-width="3"/>
+                <path d="M31,30 L45,46" class="s-steelline" stroke-width="1.6" stroke-dasharray="2 2"/>
+                <line x1="45" y1="56" x2="45" y2="65" class="s-accline" stroke-width="2"/>
+                <polygon points="41,64 49,64 45,71" class="s-accfill"/>
+              </svg>
+              <p>The piston drops and the inlet valve opens. Air and petrol are pulled in.</p>
+            </div>
+            <div class="stroke">
+              <h5><b>2</b>Compression</h5>
+              <svg viewBox="0 0 90 120" role="img" aria-label="Compression stroke: both valves closed, piston moving up, squeezing the mixture">
+                <rect x="20" y="8" width="50" height="104" rx="3" class="s-grey" stroke-width="1.2"/>
+                <rect x="23" y="30" width="44" height="16" rx="2" class="s-inkfill"/>
+                <line x1="45" y1="46" x2="45" y2="110" class="s-line" stroke-width="2.5"/>
+                <line x1="31" y1="8" x2="31" y2="16" class="s-line" stroke-width="3"/>
+                <line x1="59" y1="8" x2="59" y2="16" class="s-line" stroke-width="3"/>
+                <line x1="45" y1="66" x2="45" y2="58" class="s-accline" stroke-width="2"/>
+                <polygon points="41,59 49,59 45,52" class="s-accfill"/>
+                <text class="t-small" x="45" y="26" text-anchor="middle">squeeze</text>
+              </svg>
+              <p>Both valves shut. The piston rises and crushes the mixture into a tiny space.</p>
+            </div>
+            <div class="stroke">
+              <h5><b>3</b>Power</h5>
+              <svg viewBox="0 0 90 120" role="img" aria-label="Power stroke: spark plug fires, expanding gas forces the piston down">
+                <rect x="20" y="8" width="50" height="104" rx="3" class="s-grey" stroke-width="1.2"/>
+                <rect x="23" y="56" width="44" height="16" rx="2" class="s-inkfill"/>
+                <line x1="45" y1="72" x2="45" y2="110" class="s-line" stroke-width="2.5"/>
+                <line x1="31" y1="8" x2="31" y2="16" class="s-line" stroke-width="3"/>
+                <line x1="59" y1="8" x2="59" y2="16" class="s-line" stroke-width="3"/>
+                <circle cx="45" cy="26" r="7" class="s-accfill"/>
+                <line x1="45" y1="37" x2="45" y2="47" class="s-accline" stroke-width="2.4"/>
+                <polygon points="40,46 50,46 45,54" class="s-accfill"/>
+              </svg>
+              <p>The spark plug fires. Burning gas expands and slams the piston down. The only stroke that makes power.</p>
+            </div>
+            <div class="stroke">
+              <h5><b>4</b>Exhaust</h5>
+              <svg viewBox="0 0 90 120" role="img" aria-label="Exhaust stroke: exhaust valve open, piston moving up, pushing out burnt gas">
+                <rect x="20" y="8" width="50" height="104" rx="3" class="s-grey" stroke-width="1.2"/>
+                <rect x="23" y="30" width="44" height="16" rx="2" class="s-inkfill"/>
+                <line x1="45" y1="46" x2="45" y2="110" class="s-line" stroke-width="2.5"/>
+                <line x1="31" y1="8" x2="31" y2="16" class="s-line" stroke-width="3"/>
+                <line x1="59" y1="8" x2="59" y2="26" class="s-accline" stroke-width="3"/>
+                <path d="M45,20 L59,8" class="s-accline" stroke-width="1.6" stroke-dasharray="2 2"/>
+                <line x1="45" y1="66" x2="45" y2="58" class="s-accline" stroke-width="2"/>
+                <polygon points="41,59 49,59 45,52" class="s-accfill"/>
+              </svg>
+              <p>The exhaust valve opens and the rising piston pushes the burnt gas out. Then it starts again.</p>
+            </div>
+          </div>
+          <figcaption><b>Suck, squeeze, bang, blow.</b> At 7,000 rpm each cylinder completes this whole cycle about 58 times a second.</figcaption>
+        </figure>
+
+        <div class="box plain">
+          <span class="lab">Why this matters</span>
+          <p>Because only one stroke in four makes power, a single-cylinder engine would deliver its push in lumps. Four cylinders firing at staggered intervals means something is always pushing, which is why multi-cylinder engines are smooth.</p>
+        </div>
+
+        <h3>Why "boxer" is the whole point of this car</h3>
+        <p>Most four-cylinder engines stand their cylinders upright in a row — an "inline-four". Yours lies them flat, two pointing left and two pointing right, pistons punching away from each other like two boxers trading jabs. Hence <strong>boxer</strong>, or <strong>flat-four</strong>, or "horizontally opposed".</p>
+
+        <figure>
+          <div class="figwrap plate">
+            <!-- ILLUSTRATION: boxer engine front view -->
+            <svg viewBox="0 0 560 250" role="img" aria-label="Front view illustration of a flat-four boxer engine, with one cylinder pointing left and one right from a central crankcase">
+              <!-- crankcase -->
+              <rect x="226" y="86" width="108" height="92" rx="8" class="s-grey" stroke-width="1.5"/>
+              <circle cx="280" cy="132" r="26" class="s-metal" stroke-width="1.6"/>
+              <circle cx="280" cy="132" r="7" class="s-inkfill"/>
+              <text class="t-small" x="280" y="200" text-anchor="middle">crankcase</text>
+              <!-- left bank -->
+              <rect x="106" y="100" width="120" height="64" rx="4" class="s-grey" stroke-width="1.5"/>
+              <rect x="86" y="94" width="22" height="76" rx="3" class="s-metal" stroke-width="1.4"/>
+              <rect x="150" y="112" width="40" height="40" rx="3" class="s-metal" stroke-width="1.5"/>
+              <path d="M190,132 L258,132" class="s-line" stroke-width="3"/>
+              <!-- right bank -->
+              <rect x="334" y="100" width="120" height="64" rx="4" class="s-grey" stroke-width="1.5"/>
+              <rect x="452" y="94" width="22" height="76" rx="3" class="s-metal" stroke-width="1.4"/>
+              <rect x="370" y="112" width="40" height="40" rx="3" class="s-metal" stroke-width="1.5"/>
+              <path d="M370,132 L302,132" class="s-line" stroke-width="3"/>
+              <!-- motion arrows -->
+              <line x1="136" y1="132" x2="118" y2="132" class="s-accline" stroke-width="2"/>
+              <polygon points="119,127 119,137 111,132" class="s-accfill"/>
+              <line x1="424" y1="132" x2="442" y2="132" class="s-accline" stroke-width="2"/>
+              <polygon points="441,127 441,137 449,132" class="s-accfill"/>
+              <!-- labels -->
+              <path d="M170,112 L170,66 L212,66" class="s-lead"/>
+              <text class="t-plate" x="216" y="69">piston</text>
+              <path d="M96,94 L96,66 L140,66" class="s-lead"/>
+              <text class="t-plate" x="92" y="60" text-anchor="start">cylinder head</text>
+              <path d="M280,106 L280,46 L340,46" class="s-lead"/>
+              <text class="t-plate" x="344" y="49">crankshaft</text>
+              <text class="t-acc" x="280" y="226" text-anchor="middle">Two more cylinders sit directly behind these two.</text>
+              <!-- height bracket -->
+              <path d="M66,94 L66,170" class="s-steelline" stroke-width="1.3"/>
+              <path d="M62,94 L70,94 M62,170 L70,170" class="s-steelline" stroke-width="1.3"/>
+              <text class="t-steel" x="58" y="136" text-anchor="end">short</text>
+            </svg>
+          </div>
+          <figcaption><b>Opposed pistons.</b> The two pistons on each side reach the outside of their bores at the same moment, so their forces largely cancel — a boxer is naturally smooth without needing balance shafts.</figcaption>
+        </figure>
+
+        <p>This flat shape is not a styling choice. A flat engine is a <em>short</em> engine, so all that mass sits much lower in the car. Low mass means a low centre of gravity, and that is the single biggest reason this car changes direction the way it does.</p>
+
+        <figure>
+          <div class="figwrap">
+            <svg viewBox="0 0 660 230" role="img" aria-label="Comparison: an inline four engine sits tall with a high centre of gravity, a boxer four sits flat and low">
+              <text class="t-lab" x="30" y="20">Inline-four</text>
+              <rect x="30" y="34" width="250" height="150" rx="4" class="s-fill" stroke="var(--rule)" stroke-width="1.2"/>
+              <text class="t-small" x="40" y="50">engine bay</text>
+              <rect x="120" y="54" width="70" height="104" rx="3" class="s-grey" stroke-width="1.2"/>
+              <circle cx="140" cy="76" r="9" class="s-steelfill" stroke-width="1"/>
+              <circle cx="170" cy="76" r="9" class="s-steelfill" stroke-width="1"/>
+              <circle cx="140" cy="104" r="9" class="s-steelfill" stroke-width="1"/>
+              <circle cx="170" cy="104" r="9" class="s-steelfill" stroke-width="1"/>
+              <line x1="30" y1="184" x2="280" y2="184" class="s-line" stroke-width="2"/>
+              <circle cx="155" cy="96" r="5.5" class="s-accfill"/>
+              <line x1="155" y1="96" x2="155" y2="184" stroke="var(--accent)" stroke-width="1.2" stroke-dasharray="3 3"/>
+              <text class="t-acc" x="165" y="94">centre of mass, high</text>
+              <text class="t-small" x="30" y="203">Weight stacked upward. The car wants to lean</text>
+              <text class="t-small" x="30" y="216">onto its outside tyres in a corner.</text>
+
+              <text class="t-lab" x="380" y="20">Boxer-four (yours)</text>
+              <rect x="380" y="34" width="250" height="150" rx="4" class="s-fill" stroke="var(--rule)" stroke-width="1.2"/>
+              <text class="t-small" x="390" y="50">engine bay</text>
+              <rect x="425" y="128" width="160" height="30" rx="3" class="s-grey" stroke-width="1.2"/>
+              <circle cx="448" cy="143" r="9" class="s-steelfill" stroke-width="1"/>
+              <circle cx="476" cy="143" r="9" class="s-steelfill" stroke-width="1"/>
+              <circle cx="534" cy="143" r="9" class="s-steelfill" stroke-width="1"/>
+              <circle cx="562" cy="143" r="9" class="s-steelfill" stroke-width="1"/>
+              <line x1="380" y1="184" x2="630" y2="184" class="s-line" stroke-width="2"/>
+              <circle cx="505" cy="143" r="5.5" class="s-accfill"/>
+              <line x1="505" y1="143" x2="505" y2="184" stroke="var(--accent)" stroke-width="1.2" stroke-dasharray="3 3"/>
+              <text class="t-acc" x="514" y="134">low</text>
+              <text class="t-small" x="380" y="203">Weight spread sideways and low. The car</text>
+              <text class="t-small" x="380" y="216">turns flat, with less time spent settling.</text>
+            </svg>
+          </div>
+          <figcaption><b>The trade.</b> A boxer is wider, needs two cylinder heads instead of one, and is more awkward to service — spark plugs sit where you can barely reach them. Both makers accepted all of that to get the engine low.</figcaption>
+        </figure>
+
+        <h3>Bore, stroke and where the name comes from</h3>
+        <p>Two numbers describe the shape of a cylinder:</p>
+        <ul>
+          <li><strong>Bore</strong> — the diameter of the cylinder. <strong>86 mm</strong>.</li>
+          <li><strong>Stroke</strong> — how far the piston travels from top to bottom. <strong>86 mm</strong>.</li>
+        </ul>
+        <p>When bore equals stroke, engineers call it a <strong>square</strong> engine. A wide, short-stroke engine ("oversquare") loves revs because the piston doesn't have to travel far. A narrow, long-stroke engine ("undersquare") makes torque low down but runs out of breath. Square sits deliberately in the middle.</p>
+        <p>Multiply the bore's area by the stroke, times four cylinders, and you get <strong>1,998 cc</strong> — the engine's <strong>displacement</strong>, the total volume the pistons sweep through.</p>
+
+        <div class="box yours">
+          <span class="lab">On your car</span>
+          <p>The 86 mm × 86 mm figure is not an accident. The Toyota is a tribute to the 1983–87 Corolla AE86, the rear-drive coupé that became a drift legend, and the bore and stroke were both designed to land on 86 mm — with an 86 mm exhaust tip to match. The BRZ shares the engine, so a Subaru's cylinders are also named after a Toyota. BRZ, for its part, is usually explained as Boxer engine, Rear-wheel drive, Zenith.</p>
+        </div>
+
+        <h3>Compression ratio, and why you must use 98</h3>
+        <p>Compare the cylinder's volume when the piston is at the bottom to its volume when the piston is at the top. That ratio is the <strong>compression ratio</strong>: <strong>12.5:1</strong>, which is high for a naturally aspirated road engine.</p>
+        <p>Squeezing the mixture harder before you light it extracts more energy from the same fuel — more power and better economy at once. The catch is <strong>knock</strong> (also called detonation or pinking): under high pressure and heat, petrol can ignite on its own before the spark plug fires, which fights the rising piston instead of pushing it down. Sustained knock destroys engines.</p>
+        <p>A fuel's <strong>octane rating</strong> (RON in New Zealand, Australia and Europe) measures its resistance to igniting under pressure. Higher octane is not "more powerful" fuel — it's more <em>stubborn</em> fuel. A 12.5:1 engine needs stubborn fuel.</p>
+
+        <div class="box watch">
+          <span class="lab">Don't do this</span>
+          <p>This engine is specified for <strong>98 RON</strong>. The knock sensors will protect it on 95 by retarding the ignition timing, so it won't blow up, but you lose power and efficiency — often enough that the cheaper fuel costs you more per kilometre. Regular 91 is a bad idea in this engine.</p>
+        </div>
+
+        <h3>Valves, camshafts and the timing chain</h3>
+        <p>Each cylinder has four valves — two to let the mixture in, two to let the exhaust out. They're pushed open by egg-shaped lobes on spinning rods called <strong>camshafts</strong>. There are two camshafts per cylinder bank, four in total, which is what <strong>DOHC</strong> means: double overhead camshaft.</p>
+        <p>The camshafts must stay perfectly synchronised with the pistons, or a valve will be open when a piston arrives and the two will meet. A <strong>timing chain</strong> keeps them in step. Some engines use a rubber timing <em>belt</em> that must be replaced on a strict interval or it snaps and wrecks the engine. Yours uses a chain, designed to last the life of the engine. That's one expensive job you don't have to budget for.</p>
+        <p>The engine also has <strong>variable valve timing</strong> (Subaru's AVCS). The ideal moment to open a valve at 1,500 rpm is wrong at 7,000 rpm, so the engine rotates the camshafts slightly on the fly to suit the revs. It's the reason a modern engine can idle smoothly <em>and</em> breathe at high rpm.</p>
+
+        <h3>D-4S: two sets of injectors</h3>
+        <p>Fuel has to be sprayed into the engine, and there are two schools of thought about where:</p>
+        <ul>
+          <li><strong>Port injection</strong> sprays into the intake tract before the valve. The fuel has time to mix with air evenly, and it washes over the back of the intake valves on the way past.</li>
+          <li><strong>Direct injection</strong> sprays at very high pressure straight into the cylinder. More precise, more power, better economy — but the intake valves never get washed, so oily vapour from the engine's breathing system bakes onto them as carbon over tens of thousands of kilometres.</li>
+        </ul>
+        <p>Toyota's <strong>D-4S</strong> system fits both and lets the computer choose, or blend them, depending on load and revs. You get direct injection's power with port injection's self-cleaning. This is genuinely clever engineering, and it's why this engine doesn't suffer the carbon build-up that plagues many direct-injection-only engines of the same era. It was also the unusual part of the collaboration: Toyota shared an in-development injection system with Subaru, who redesigned their boxer around it.</p>
+
+        <h3>Naturally aspirated, power, and torque</h3>
+        <p>Your engine is <strong>naturally aspirated</strong>: air arrives at whatever pressure the atmosphere provides. No turbocharger or supercharger forcing extra air in. The upside is response — the throttle does exactly what your foot does, instantly and proportionally. The downside is that the only way to make more power is to rev harder.</p>
+        <p>Which brings us to the two numbers everyone quotes and almost nobody separates properly:</p>
+        <ul>
+          <li><strong>Torque</strong> is twisting force. It's <em>how hard</em> the engine can shove. Measured in newton-metres (Nm).</li>
+          <li><strong>Power</strong> is torque multiplied by revs. It's <em>how fast the engine can do work</em>. Measured in kilowatts (kW) or horsepower.</li>
+        </ul>
+        <p>Torque is what you feel in your back. Power is what determines how quickly you actually get down the road. An engine making modest torque at very high revs can make serious power — exactly what this one does.</p>
+
+        <figure>
+          <div class="figwrap">
+            <svg viewBox="0 0 700 320" role="img" aria-label="Torque and power curves for the FA20 engine against engine speed, showing a dip in torque between about 3500 and 4500 rpm">
+              <g class="s-soft" stroke-width="1">
+                <line x1="60" y1="260" x2="640" y2="260"/>
+                <line x1="60" y1="205.5" x2="640" y2="205.5" stroke-dasharray="2 4"/>
+                <line x1="60" y1="151" x2="640" y2="151" stroke-dasharray="2 4"/>
+                <line x1="60" y1="96.4" x2="640" y2="96.4" stroke-dasharray="2 4"/>
+                <line x1="60" y1="41.8" x2="640" y2="41.8" stroke-dasharray="2 4"/>
+              </g>
+              <line x1="60" y1="20" x2="60" y2="260" class="s-line" stroke-width="1.4"/>
+              <line x1="640" y1="20" x2="640" y2="260" class="s-line" stroke-width="1.4"/>
+              <line x1="60" y1="260" x2="640" y2="260" class="s-line" stroke-width="1.4"/>
+              <text class="t-num" x="54" y="263" text-anchor="end">0</text>
+              <text class="t-num" x="54" y="209" text-anchor="end">50</text>
+              <text class="t-num" x="54" y="154" text-anchor="end">100</text>
+              <text class="t-num" x="54" y="100" text-anchor="end">150</text>
+              <text class="t-num" x="54" y="45" text-anchor="end">200</text>
+              <text class="t-steel" x="60" y="14">Torque (Nm)</text>
+              <text class="t-num" x="646" y="263">0</text>
+              <text class="t-num" x="646" y="203">40</text>
+              <text class="t-num" x="646" y="143">80</text>
+              <text class="t-num" x="646" y="83">120</text>
+              <text class="t-num" x="646" y="23">160</text>
+              <text class="t-acc" x="640" y="14" text-anchor="end">Power (kW)</text>
+              <g class="t-num">
+                <text x="136" y="276" text-anchor="middle">1k</text>
+                <text x="213" y="276" text-anchor="middle">2k</text>
+                <text x="289" y="276" text-anchor="middle">3k</text>
+                <text x="365" y="276" text-anchor="middle">4k</text>
+                <text x="442" y="276" text-anchor="middle">5k</text>
+                <text x="518" y="276" text-anchor="middle">6k</text>
+                <text x="594" y="276" text-anchor="middle">7k</text>
+              </g>
+              <text class="t-small" x="350" y="294" text-anchor="middle">engine speed (rpm)</text>
+              <line x1="625" y1="20" x2="625" y2="260" stroke="var(--accent)" stroke-width="1.2" stroke-dasharray="4 3" opacity="0.65"/>
+              <text class="t-acc" x="621" y="33" text-anchor="end">redline 7,400</text>
+              <polyline class="s-steelline" stroke-width="2.6" points="136,96 213,58 274,47 327,64 365,72 403,58 480,44 556,36 594,42 625,55"/>
+              <polyline class="s-accline" stroke-width="2.6" points="136,236 213,202 274,174 327,161 365,152 403,129 480,89 556,51 594,40 625,41"/>
+              <circle cx="556" cy="36" r="4" class="s-steelfill" stroke-width="1.6"/>
+              <text class="t-steel" x="548" y="28" text-anchor="end">205 Nm @ 6,400–6,600</text>
+              <circle cx="594" cy="40" r="4" fill="var(--accent)"/>
+              <text class="t-acc" x="586" y="62" text-anchor="end">147 kW @ 7,000</text>
+              <path d="M365,86 L365,106" stroke="var(--ink-faint)" stroke-width="1" stroke-dasharray="2 2"/>
+              <text class="t-lab" x="365" y="120" text-anchor="middle">the dip</text>
+              <text class="t-small" x="365" y="133" text-anchor="middle">~3,500–4,500 rpm</text>
+            </svg>
+          </div>
+          <figcaption><b>The shape of your engine.</b> Curve shapes are indicative; the peak figures are the manufacturer's. Notice the torque line sag in the middle, and how power keeps climbing right to the redline.</figcaption>
+        </figure>
+
+        <div class="box yours">
+          <span class="lab">On your car — the famous torque dip</span>
+          <p>Between roughly 3,500 and 4,500 rpm the FA20 makes noticeably less torque than it does either side. Every 86, GT86, FR-S and BRZ of this generation does this; it's a known consequence of the intake and exhaust tuning, not a fault.</p>
+          <p>What it means for you: <strong>if you short-shift at 4,000 rpm, the car feels flat and slow, and you'll wonder what everyone sees in it.</strong> Hold a gear past 4,500 and it comes alive and keeps pulling to 7,400. Learning to use the top half of the rev range is the single biggest change to how this car feels, and it costs nothing.</p>
+        </div>
+      </section>
+
+      <!-- ============ 4 ============ -->
+      <section id="transmission" data-nav="Clutch &amp; gearbox">
+        <p class="secnum">04</p>
+        <h2 class="sec">Clutch and gearbox</h2>
+        <p class="sec-kicker">The engine only works in a narrow band of revs. Gears hide that from you.</p>
+
+        <h3>Why gears exist at all</h3>
+        <p>Your engine is useful between roughly 1,500 and 7,400 rpm. Below that it stalls; above that it destroys itself. That's a speed range of about 5:1. But your wheels need to go from 0 km/h to over 200 km/h, and they need enormous force to get 1,240 kg moving from rest and very little to hold it at 100 km/h.</p>
+        <p>A gearbox resolves that mismatch. It's a <strong>torque multiplier</strong>, and it works by the oldest trade in mechanics: <em>you can have force or you can have speed, and you buy one with the other.</em></p>
+
+        <div class="box plain">
+          <span class="lab">Reading a gear ratio</span>
+          <p>A ratio like <strong>3.63:1</strong> means the engine turns 3.63 times for every one turn of the gearbox output. You get <strong>3.63 times the torque</strong> at the output and <strong>a third of the speed</strong>. That's first gear: huge shove, not much road speed. Sixth is close to 1:1 or lower — almost no multiplication, so the engine can sit lazily at low revs while you cruise.</p>
+        </div>
+
+        <p>There's a second multiplication after the gearbox, in the differential, called the <strong>final drive ratio</strong>. It applies in every gear. Your total gearing in any gear is the gearbox ratio multiplied by the final drive — so a gearbox ratio of 3.63 with a final drive of about 4:1 gives roughly 14 times engine torque at the wheels in first. Both numbers are listed in the specifications pages at the back of your owner's manual; worth finding once.</p>
+
+        <h3>The clutch</h3>
+        <p>The engine must keep spinning when the car is stationary, so you need a way to disconnect them. In a manual car that's the clutch: a friction disc between the engine's <strong>flywheel</strong> and a spring-loaded <strong>pressure plate</strong>.</p>
+
+        <figure>
+          <div class="figwrap plate">
+            <!-- ILLUSTRATION: clutch -->
+            <svg viewBox="0 0 600 300" role="img" aria-label="Clutch side view and friction disc face on">
+  <line x1="24" y1="120" x2="88" y2="120" class="s-line" stroke-width="7" stroke-linecap="round"/>
+  <text class="t-small" x="24" y="92">from the engine</text>
+  <rect x="88" y="50" width="26" height="140" rx="5" class="s-metal" stroke-width="1.7"/>
+  <rect x="150" y="60" width="16" height="120" rx="4" class="s-accfill" opacity=".85"/>
+  <rect x="152" y="104" width="12" height="32" rx="2" class="s-inkfill"/>
+  <rect x="200" y="50" width="24" height="140" rx="5" class="s-metal" stroke-width="1.7"/>
+  <path d="M224,76 L250,104 L224,118 L250,132 L224,160" class="s-steelline" stroke-width="2"/>
+  <line x1="166" y1="120" x2="300" y2="120" class="s-line" stroke-width="7" stroke-linecap="round"/>
+  <text class="t-small" x="300" y="92" text-anchor="end">to the gearbox</text>
+  <!-- clamp arrows -->
+  <line x1="122" y1="34" x2="142" y2="34" class="s-accline" stroke-width="2.2"/>
+  <polygon points="141,29 141,39 149,34" class="s-accfill"/>
+  <line x1="194" y1="34" x2="174" y2="34" class="s-accline" stroke-width="2.2"/>
+  <polygon points="175,29 175,39 167,34" class="s-accfill"/>
+  <text class="t-acc" x="158" y="24" text-anchor="middle">clamped at rest</text>
+  <!-- staggered labels -->
+  <path d="M101,190 L101,214" class="s-lead"/>
+  <text class="t-plate" x="101" y="226" text-anchor="middle">flywheel</text>
+  <text class="t-small" x="101" y="238" text-anchor="middle">bolted to the engine</text>
+  <path d="M158,180 L158,252" class="s-lead"/>
+  <text class="t-plate" x="158" y="264" text-anchor="middle">friction disc</text>
+  <text class="t-small" x="158" y="276" text-anchor="middle">the only part that wears</text>
+  <path d="M212,190 L212,196 L262,196" class="s-lead"/>
+  <text class="t-plate" x="266" y="199">pressure plate</text>
+  <text class="t-small" x="266" y="211">springs hold it clamped</text>
+  <!-- face-on disc -->
+  <circle cx="470" cy="118" r="72" class="s-accfill" opacity=".2"/>
+  <circle cx="470" cy="118" r="72" class="s-accline" stroke-width="2"/>
+  <circle cx="470" cy="118" r="48" class="s-fill" stroke="var(--accent)" stroke-width="1.6"/>
+  <circle cx="470" cy="118" r="24" class="s-metal" stroke-width="1.6"/>
+  <g stroke="var(--ink-soft)" stroke-width="1.6">
+    <line x1="470" y1="94" x2="470" y2="88"/><line x1="487" y1="101" x2="491" y2="97"/>
+    <line x1="494" y1="118" x2="500" y2="118"/><line x1="487" y1="135" x2="491" y2="139"/>
+    <line x1="470" y1="142" x2="470" y2="148"/><line x1="453" y1="135" x2="449" y2="139"/>
+    <line x1="446" y1="118" x2="440" y2="118"/><line x1="453" y1="101" x2="449" y2="97"/>
+  </g>
+  <g fill="var(--rule-soft)" stroke="var(--ink-soft)" stroke-width="1.2">
+    <rect x="462" y="62" width="16" height="10" rx="2"/><rect x="462" y="164" width="16" height="10" rx="2"/>
+    <rect x="414" y="113" width="16" height="10" rx="2"/><rect x="510" y="113" width="16" height="10" rx="2"/>
+  </g>
+  <path d="M470,46 L470,34 L408,34" class="s-lead"/>
+  <text class="t-acc" x="404" y="37" text-anchor="end">friction lining</text>
+  <path d="M470,142 L470,214" class="s-lead"/>
+  <text class="t-plate" x="470" y="226" text-anchor="middle">splined hub</text>
+  <text class="t-small" x="470" y="238" text-anchor="middle">slides along the gearbox shaft</text>
+  <text class="t-small" x="470" y="258" text-anchor="middle">the same disc, seen face on</text>
+</svg>
+          </div>
+          <figcaption><b>The part most people have backwards.</b> The clutch's resting state is clamped. Pressing the pedal <em>releases</em> it. You don't press to engage; you press to let go.</figcaption>
+        </figure>
+
+        <p>Pulling away means deliberately letting the disc slip — engine spinning faster than the gearbox — and feeding the two together. Slipping converts the speed difference into heat and wears the friction material, which is why:</p>
+        <ul>
+          <li><strong>Riding the clutch</strong> (resting your foot on the pedal while driving) keeps it half-engaged and cooks it.</li>
+          <li><strong>Holding the car on a hill with the clutch</strong> instead of the brake burns through a clutch faster than anything else you can do.</li>
+          <li>A clutch that <strong>slips</strong> — revs rise but the car doesn't accelerate to match — is worn out, not adjustable.</li>
+        </ul>
+
+        <div class="box yours">
+          <span class="lab">On your car — the cold second gear</span>
+          <p>These cars use an Aisin six-speed manual. It's a strong gearbox, but when properly cold it commonly resists going into second — the lever feels like it hits a wall. The synchroniser rings have to drag two spinning shafts to the same speed, and thick cold gear oil makes that slow.</p>
+          <p>Don't force it. Wait a couple of minutes until the oil warms, shift to second more slowly and deliberately, or go first-to-third for the first kilometre. Forcing a cold synchro is how you eventually pay for a gearbox.</p>
+        </div>
+      </section>
+
+      <!-- ============ 5 ============ -->
+      <section id="drivetrain" data-nav="Drivetrain &amp; diff">
+        <p class="secnum">05</p>
+        <h2 class="sec">Drivetrain and differential</h2>
+        <p class="sec-kicker">Front engine, rear-wheel drive — and one very clever gearbox in the back.</p>
+
+        <p>Your car is <strong>FR</strong>: front engine, rear-wheel drive. The engine sits at the front, the gearbox directly behind it, and a spinning <strong>driveshaft</strong> (or propshaft) runs down the tunnel between the seats to a <strong>differential</strong> between the rear wheels, which sends drive out sideways to each one.</p>
+
+        <figure>
+          <div class="figwrap">
+            <svg viewBox="0 0 660 260" role="img" aria-label="Top view of the car showing the front engine, gearbox, driveshaft running to the rear differential and out to the rear wheels">
+              <path d="M150,42 Q96,42 78,70 L50,106 Q42,130 50,154 L78,190 Q96,218 150,218 L480,218 Q540,218 566,196 L596,160 Q606,130 596,100 L566,64 Q540,42 480,42 Z" class="s-fill" stroke="var(--rule)" stroke-width="1.4"/>
+              <text class="t-small" x="330" y="34" text-anchor="middle">front of car on the left · viewed from above</text>
+              <rect x="112" y="18" width="46" height="22" rx="4" class="s-grey" stroke-width="1.2"/>
+              <rect x="112" y="220" width="46" height="22" rx="4" class="s-grey" stroke-width="1.2"/>
+              <text class="t-small" x="135" y="13" text-anchor="middle">steers only</text>
+              <text class="t-small" x="135" y="256" text-anchor="middle">steers only</text>
+              <rect x="468" y="18" width="46" height="22" rx="4" fill="var(--accent-soft)" stroke="var(--accent)" stroke-width="1.6"/>
+              <rect x="468" y="220" width="46" height="22" rx="4" fill="var(--accent-soft)" stroke="var(--accent)" stroke-width="1.6"/>
+              <text class="t-acc" x="491" y="13" text-anchor="middle">driven</text>
+              <text class="t-acc" x="491" y="256" text-anchor="middle">driven</text>
+              <rect x="96" y="104" width="94" height="52" rx="4" class="s-steelfill" stroke-width="1.4"/>
+              <text class="t-lab" x="143" y="127" text-anchor="middle">Engine</text>
+              <text class="t-small" x="143" y="141" text-anchor="middle">flat-four, low</text>
+              <rect x="196" y="112" width="74" height="36" rx="4" class="s-grey" stroke-width="1.4"/>
+              <text class="t-lab" x="233" y="134" text-anchor="middle">Gearbox</text>
+              <line x1="272" y1="130" x2="424" y2="130" stroke="var(--accent)" stroke-width="5" stroke-linecap="round"/>
+              <text class="t-acc" x="348" y="122" text-anchor="middle">driveshaft</text>
+              <text class="t-small" x="348" y="150" text-anchor="middle">one shaft, the length of the car</text>
+              <circle cx="455" cy="130" r="30" class="s-steelfill" stroke-width="1.6"/>
+              <text class="t-lab" x="455" y="128" text-anchor="middle">Diff</text>
+              <text class="t-small" x="455" y="141" text-anchor="middle">+ LSD</text>
+              <line x1="455" y1="100" x2="455" y2="40" stroke="var(--accent)" stroke-width="4" stroke-linecap="round"/>
+              <line x1="455" y1="160" x2="455" y2="220" stroke="var(--accent)" stroke-width="4" stroke-linecap="round"/>
+              <text class="t-small" x="500" y="74">half-shafts</text>
+            </svg>
+          </div>
+          <figcaption><b>Why enthusiasts care about this layout.</b> The front wheels do nothing but steer and the rear wheels do nothing but drive. Each axle has one job, so the steering stays clean and informative under power — unlike a front-drive car, where the front tyres must steer and accelerate at once.</figcaption>
+        </figure>
+
+        <h3>Why a differential has to exist</h3>
+        <p>Drive into a corner and your outside rear wheel travels along a bigger arc than the inside one. Over a tight turn that difference is significant. If both wheels were locked to one solid shaft, one of them would have to skip and scrub across the road, which would make the car hop, wear the tyres and eventually break something.</p>
+        <p>A differential is a small gearbox that lets the two wheels turn at <strong>different speeds</strong> while still driving both. It "differentiates" between them. That's the whole name.</p>
+
+        <figure>
+          <div class="figwrap plate">
+            <!-- ILLUSTRATION: differential, top view -->
+            <svg viewBox="0 0 560 300" role="img" aria-label="Differential seen from above">
+  <text class="t-small" x="26" y="16">viewed from above · front of the car at the left</text>
+  <!-- driveshaft -->
+  <line x1="26" y1="150" x2="186" y2="150" class="s-accline" stroke-width="6" stroke-linecap="round"/>
+  <text class="t-acc" x="26" y="140">driveshaft in</text>
+  <!-- pinion -->
+  <circle cx="206" cy="150" r="20" class="s-metal" stroke-width="1.6"/>
+  <g stroke="var(--ink-soft)" stroke-width="1.8">
+    <line x1="206" y1="130" x2="206" y2="124"/><line x1="220" y1="136" x2="224" y2="132"/>
+    <line x1="206" y1="170" x2="206" y2="176"/><line x1="192" y1="164" x2="188" y2="168"/>
+  </g>
+  <path d="M206,174 L206,212 L168,212" class="s-lead"/>
+  <text class="t-plate" x="164" y="215" text-anchor="end">pinion</text>
+  <!-- crown wheel, edge on -->
+  <rect x="226" y="70" width="18" height="160" rx="4" class="s-metal" stroke-width="1.7"/>
+  <g stroke="var(--ink-soft)" stroke-width="1.8">
+    <line x1="226" y1="82" x2="219" y2="82"/><line x1="226" y1="100" x2="219" y2="100"/>
+    <line x1="226" y1="118" x2="219" y2="118"/><line x1="226" y1="136" x2="219" y2="136"/>
+    <line x1="226" y1="164" x2="219" y2="164"/><line x1="226" y1="182" x2="219" y2="182"/>
+    <line x1="226" y1="200" x2="219" y2="200"/><line x1="226" y1="218" x2="219" y2="218"/>
+  </g>
+  <path d="M226,96 L150,88" class="s-lead"/>
+  <text class="t-plate" x="146" y="91" text-anchor="end">crown wheel</text>
+  <!-- carrier -->
+  <rect x="208" y="98" width="96" height="104" rx="8" class="s-steelfill" stroke-width="1.7" fill-opacity=".55"/>
+  <!-- spider gears -->
+  <circle cx="256" cy="124" r="14" class="s-metal" stroke-width="1.4"/>
+  <circle cx="256" cy="176" r="14" class="s-metal" stroke-width="1.4"/>
+  <circle cx="232" cy="150" r="15" class="s-metal" stroke-width="1.4"/>
+  <circle cx="280" cy="150" r="15" class="s-metal" stroke-width="1.4"/>
+  <!-- half shafts -->
+  <line x1="256" y1="98" x2="256" y2="46" class="s-line" stroke-width="6" stroke-linecap="round"/>
+  <line x1="256" y1="202" x2="256" y2="256" class="s-line" stroke-width="6" stroke-linecap="round"/>
+  <rect x="236" y="24" width="40" height="20" rx="4" class="s-grey" stroke-width="1.4"/>
+  <rect x="236" y="258" width="40" height="20" rx="4" class="s-grey" stroke-width="1.4"/>
+  <text class="t-plate" x="286" y="38">right-hand wheel</text>
+  <text class="t-plate" x="286" y="272">left-hand wheel</text>
+  <!-- labels right -->
+  <path d="M296,140 L356,116" class="s-lead"/>
+  <text class="t-plate" x="360" y="114">spider gears</text>
+  <text class="t-small" x="360" y="126">let the two sides turn</text>
+  <text class="t-small" x="360" y="138">at different speeds</text>
+  <path d="M304,190 L356,206" class="s-lead"/>
+  <text class="t-plate" x="360" y="209">carrier</text>
+  <text class="t-small" x="360" y="221">the limited-slip unit</text>
+  <text class="t-small" x="360" y="233">lives in here</text>
+</svg>
+          </div>
+          <figcaption><b>Inside the diff.</b> The pinion turns the crown wheel, which turns the whole carrier. The spider gears inside let the two half-shafts spin at different speeds while the carrier drives both — the mechanism that makes cornering possible.</figcaption>
+        </figure>
+
+        <h3>Open diffs, and the problem with them</h3>
+        <p>A basic <strong>open differential</strong> has a flaw that follows directly from how it works: it always sends equal torque to both sides, which means the maximum it can send to <em>either</em> side is limited by whichever wheel has <em>less</em> grip. Lift one rear wheel off the ground and it spins uselessly while the other does nothing. Put one wheel on a wet painted line and you get the same outcome in miniature.</p>
+
+        <h3>The limited-slip differential</h3>
+        <p>A <strong>limited-slip differential</strong> (LSD) allows the speed difference a corner needs, but limits it — once one wheel starts spinning much faster than the other, internal friction fights that difference and torque is biased toward the wheel that still has grip.</p>
+        <p>These cars use a <strong>Torsen</strong> LSD, short for "torque sensing". It uses worm gears whose geometry naturally resists being driven backwards, so the harder one wheel tries to run away, the more the unit locks up. Mechanical, immediate, no electronics. Fitment varied by market and trim, so if you're not certain whether yours has one, check the specification for your exact model and build.</p>
+
+        <div class="box yours">
+          <span class="lab">On your car</span>
+          <p>Two practical consequences. First, both rear wheels pull you out of a corner, so you can use the throttle mid-corner instead of just waiting. Second, when the back does step out, it does so with both wheels together and progressively, which is a large part of why these cars have a reputation as a brilliant place to learn car control — on a track or a skid pan, not on the road.</p>
+          <p>An LSD also needs its own specific oil. See the fluids table: the wrong spec in a limited-slip diff causes chatter and wear.</p>
+        </div>
+      </section>
+
+      <!-- ============ 6 ============ -->
+      <section id="suspension" data-nav="Suspension &amp; chassis">
+        <p class="secnum">06</p>
+        <h2 class="sec">Suspension and chassis</h2>
+        <p class="sec-kicker">The job is not comfort. The job is keeping four small rubber patches pressed against the road.</p>
+
+        <p>People assume suspension exists to smooth out bumps. Comfort is a side effect. The real job is <strong>keeping the tyres in contact with the road surface</strong> while the car's body does whatever its mass makes it do. A tyre that's momentarily light, or leaning over on its edge, isn't gripping — and everything your car does depends on grip.</p>
+
+        <figure>
+          <div class="figwrap plate">
+            <!-- ILLUSTRATION: suspension -->
+            <svg viewBox="0 0 640 300" role="img" aria-label="MacPherson strut and double wishbone suspension">
+  <text class="t-lab" x="20" y="18">Front — MacPherson strut</text>
+  <!-- body -->
+  <rect x="24" y="34" width="44" height="186" rx="3" class="s-grey" stroke-width="1.4"/>
+  <g stroke="var(--rule)" stroke-width="1">
+    <line x1="28" y1="48" x2="64" y2="38"/><line x1="28" y1="70" x2="64" y2="60"/>
+    <line x1="28" y1="92" x2="64" y2="82"/><line x1="28" y1="114" x2="64" y2="104"/>
+    <line x1="28" y1="136" x2="64" y2="126"/><line x1="28" y1="158" x2="64" y2="148"/>
+    <line x1="28" y1="180" x2="64" y2="170"/><line x1="28" y1="202" x2="64" y2="192"/>
+  </g>
+  <text class="t-small" x="46" y="234" text-anchor="middle">body</text>
+  <!-- top mount -->
+  <rect x="90" y="44" width="38" height="11" rx="3" class="s-metal" stroke-width="1.4"/>
+  <!-- damper rod -->
+  <line x1="108" y1="54" x2="136" y2="174" class="s-line" stroke-width="3.4"/>
+  <!-- coil -->
+  <path d="M108.0,54.0 L97.3,65.5 L124.7,68.2 L101.3,82.7 L128.7,85.3 L105.3,99.8 L132.7,102.5 L109.3,117.0 L136.7,119.6 L113.3,134.1 L140.7,136.8 L117.3,151.2 L144.7,153.9 L121.3,168.4 L136.0,174.0"
+        class="s-accline" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/>
+  <!-- upright -->
+  <rect x="128" y="168" width="18" height="58" rx="3" class="s-metal" stroke-width="1.5"/>
+  <!-- lower arm -->
+  <line x1="70" y1="204" x2="130" y2="216" class="s-line" stroke-width="5" stroke-linecap="round"/>
+  <circle cx="70" cy="204" r="4.5" class="s-steelfill" stroke-width="1.4"/>
+  <circle cx="130" cy="216" r="4.5" class="s-steelfill" stroke-width="1.4"/>
+  <!-- wheel -->
+  <circle cx="192" cy="200" r="50" class="s-fill" stroke="var(--ink)" stroke-width="2.2"/>
+  <circle cx="192" cy="200" r="30" class="s-grey" stroke-width="1.5"/>
+  <g stroke="var(--ink-soft)" stroke-width="2" stroke-linecap="round" opacity=".75">
+    <line x1="192" y1="192" x2="192" y2="174"/><line x1="199" y1="195" x2="209" y2="181"/>
+    <line x1="204" y1="200" x2="220" y2="200"/><line x1="199" y1="205" x2="209" y2="219"/>
+    <line x1="192" y1="208" x2="192" y2="226"/><line x1="185" y1="205" x2="175" y2="219"/>
+    <line x1="180" y1="200" x2="164" y2="200"/><line x1="185" y1="195" x2="175" y2="181"/>
+  </g>
+  <circle cx="192" cy="200" r="7" fill="var(--ink-soft)"/>
+  <line x1="146" y1="198" x2="164" y2="199" class="s-line" stroke-width="4"/>
+  <line x1="60" y1="250" x2="280" y2="250" class="s-line" stroke-width="1.8"/>
+  <!-- labels -->
+  <path d="M142,76 L180,62" class="s-lead"/><text class="t-acc" x="184" y="60">coil spring</text>
+  <path d="M124,112 L180,96" class="s-lead"/><text class="t-plate" x="184" y="94">damper</text>
+  <text class="t-small" x="184" y="106">inside the spring, and part</text>
+  <text class="t-small" x="184" y="118">of the upright's structure</text>
+  <path d="M100,210 L100,268" class="s-lead"/><text class="t-plate" x="100" y="280" text-anchor="middle">lower control arm</text>
+
+  <text class="t-lab" x="340" y="18">Rear — double wishbone</text>
+  <rect x="344" y="34" width="44" height="186" rx="3" class="s-grey" stroke-width="1.4"/>
+  <g stroke="var(--rule)" stroke-width="1">
+    <line x1="348" y1="48" x2="384" y2="38"/><line x1="348" y1="70" x2="384" y2="60"/>
+    <line x1="348" y1="92" x2="384" y2="82"/><line x1="348" y1="114" x2="384" y2="104"/>
+    <line x1="348" y1="136" x2="384" y2="126"/><line x1="348" y1="158" x2="384" y2="148"/>
+    <line x1="348" y1="180" x2="384" y2="170"/><line x1="348" y1="202" x2="384" y2="192"/>
+  </g>
+  <text class="t-small" x="366" y="234" text-anchor="middle">body</text>
+  <rect x="378" y="44" width="38" height="11" rx="3" class="s-metal" stroke-width="1.4"/>
+  <line x1="396" y1="54" x2="412" y2="208" class="s-line" stroke-width="3.4"/>
+  <path d="M396.0,54.0 L384.1,65.0 L410.9,71.9 L386.1,84.2 L412.9,91.2 L388.1,103.5 L414.9,110.4 L390.1,122.7 L416.9,129.7 L392.1,142.0 L418.9,148.9 L394.1,161.2 L420.9,168.2 L396.1,180.5 L422.9,187.4 L398.1,199.7 L412.0,208.0"
+        class="s-accline" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/>
+  <rect x="436" y="152" width="18" height="76" rx="3" class="s-metal" stroke-width="1.5"/>
+  <line x1="390" y1="164" x2="438" y2="158" class="s-line" stroke-width="5" stroke-linecap="round"/>
+  <circle cx="390" cy="164" r="4.5" class="s-steelfill" stroke-width="1.4"/>
+  <circle cx="438" cy="158" r="4.5" class="s-steelfill" stroke-width="1.4"/>
+  <line x1="390" y1="216" x2="438" y2="222" class="s-line" stroke-width="5" stroke-linecap="round"/>
+  <circle cx="390" cy="216" r="4.5" class="s-steelfill" stroke-width="1.4"/>
+  <circle cx="438" cy="222" r="4.5" class="s-steelfill" stroke-width="1.4"/>
+  <circle cx="500" cy="200" r="50" class="s-fill" stroke="var(--ink)" stroke-width="2.2"/>
+  <circle cx="500" cy="200" r="30" class="s-grey" stroke-width="1.5"/>
+  <g stroke="var(--ink-soft)" stroke-width="2" stroke-linecap="round" opacity=".75">
+    <line x1="500" y1="192" x2="500" y2="174"/><line x1="507" y1="195" x2="517" y2="181"/>
+    <line x1="512" y1="200" x2="528" y2="200"/><line x1="507" y1="205" x2="517" y2="219"/>
+    <line x1="500" y1="208" x2="500" y2="226"/><line x1="493" y1="205" x2="483" y2="219"/>
+    <line x1="488" y1="200" x2="472" y2="200"/><line x1="493" y1="195" x2="483" y2="181"/>
+  </g>
+  <circle cx="500" cy="200" r="7" fill="var(--ink-soft)"/>
+  <line x1="454" y1="198" x2="472" y2="199" class="s-line" stroke-width="4"/>
+  <line x1="368" y1="250" x2="588" y2="250" class="s-line" stroke-width="1.8"/>
+  <path d="M440,158 L560,128" class="s-lead"/><text class="t-plate" x="564" y="126">upper arm</text>
+  <path d="M440,222 L556,236" class="s-lead"/><text class="t-plate" x="560" y="239">lower arm</text>
+  <path d="M424,96 L470,80" class="s-lead"/><text class="t-acc" x="474" y="78">spring + damper</text>
+  <text class="t-small" x="474" y="90">separate from the arms</text>
+  <text class="t-small" x="340" y="280">Two arms per side hold the wheel's angle steady as it moves.</text>
+</svg>
+          </div>
+          <figcaption><b>Both ends of your car.</b> Different designs because the two ends have different jobs: the front has to package steering and the engine, the rear has to keep a driven tyre planted. The Toyota and the Subaru use the same designs, tuned with different spring and damper rates.</figcaption>
+        </figure>
+
+        <h3>The three components that do the work</h3>
+        <ul>
+          <li><strong>Spring.</strong> Carries the weight of the car and compresses over bumps. Its stiffness is its <em>spring rate</em>, in newtons per millimetre. A stiffer spring resists roll and dive but transmits more of the road.</li>
+          <li><strong>Damper</strong> (shock absorber). Controls <em>how fast</em> the spring is allowed to move. A spring on its own, once disturbed, would bounce for ages — the damper forces oil through small valves, turning that motion into heat and killing the oscillation. Worn dampers are why an old car feels floaty and skips over mid-corner bumps.</li>
+          <li><strong>Anti-roll bar.</strong> A torsion bar linking the left and right wheels of an axle. When both wheels move together it does almost nothing, but when one side rises relative to the other — body roll — it twists and resists. It lets a designer cut roll without making the ride harsh.</li>
+        </ul>
+        <p>Holding all of it to the car are rubber <strong>bushes</strong>. They allow controlled movement and absorb vibration, and they perish with age and heat. On a car from 2012, tired bushes are one of the most common reasons one of these feels vague compared to how it felt new.</p>
+
+        <h3>Centre of gravity and weight transfer</h3>
+        <p>These cars' centre of gravity sits around 460 mm off the ground — remarkably low for a road car, and the direct payoff of that flat engine mounted low and rearward. Kerb weight is about 1,240 kg, with roughly 53% of it over the front wheels.</p>
+        <p>Low and light changes the car's behaviour through one mechanism: <strong>weight transfer</strong>. Whenever you accelerate, brake or turn, load shifts across the car, and the amount it shifts depends on how high the centre of gravity is. A tall car has to lean, settle, and only then turn. Yours transfers less, so it changes direction almost immediately and stays flat while doing it. That's the feeling people mean when they call these cars "pointy" or "honest".</p>
+
+        <div class="box plain">
+          <span class="lab">The single most useful thing to understand about driving</span>
+          <p><strong>Braking moves weight onto the front tyres; accelerating moves it onto the rears.</strong> More load means more grip, up to a point. So the front tyres have their most grip while you're braking and their least while you're accelerating — and the reverse for the rears.</p>
+          <p>That's why smooth inputs matter: every abrupt movement of the controls is a sudden redistribution of grip. And it's why braking gently into a corner's entry makes the nose turn in better. Every advanced driving technique is an application of this one idea.</p>
+        </div>
+
+        <h3>Understeer and oversteer</h3>
+        <ul>
+          <li><strong>Understeer</strong> — the front tyres run out of grip first. You turn the wheel further and the car keeps going straight on. The instinctive reaction (more steering) makes it worse; the fix is to ease off and let the front tyres start gripping again.</li>
+          <li><strong>Oversteer</strong> — the rear tyres run out of grip first. The back slides wide and the car rotates more than you asked for.</li>
+        </ul>
+        <p>Nearly all road cars are deliberately set up to understeer at the limit, because running wide is more survivable for an untrained driver than spinning. These cars are unusual: modest power, a well-balanced chassis and deliberately low-grip standard tyres mean the rear will let go willingly and predictably.</p>
+
+        <div class="box yours">
+          <span class="lab">Toyota vs Subaru, at the limit</span>
+          <p>This is the one place the twins genuinely diverge. Subaru's stiffer front springs and softer rear tune were intended to make the BRZ a fraction more stable and slightly more understeer-biased, where the Toyota is marginally more willing to rotate. Reviewers who drove them back to back at launch generally described the difference as subtle rather than transformative, and it shows up at the limit on a track rather than on a normal road. Neither is better; they're two readings of the same brief.</p>
+        </div>
+
+        <div class="box watch">
+          <span class="lab">Worth saying plainly</span>
+          <p>That willingness to rotate is a gift on a track or a skid pan with run-off and an instructor. On a public road it's a crash. If you want to learn what your car does at its limits — and with this car, you should — find a track day or a defensive driving course. New Zealand has plenty of both.</p>
+        </div>
+      </section>
+
+      <!-- ============ 7 ============ -->
+      <section id="steering" data-nav="Steering &amp; alignment">
+        <p class="secnum">07</p>
+        <h2 class="sec">Steering and alignment</h2>
+        <p class="sec-kicker">Three angles decide how your car tracks, turns and wears its tyres.</p>
+
+        <h3>Rack and pinion</h3>
+        <p>Turning the wheel rotates a shaft with a small gear on the end — the <strong>pinion</strong>. Its teeth mesh with a long toothed bar, the <strong>rack</strong>, which slides left or right and pushes <strong>tie rods</strong> that swivel the front wheels. Rotation in, sideways movement out. That's the whole mechanism.</p>
+        <p>Your car has <strong>electric power steering</strong> (EPS): an electric motor assists the rack. It's lighter and uses no engine power when you're going straight, which is why nearly every modern car uses it. It's also the one component of this generation that reviewers consistently criticised — the steering is accurate and quick, but the EPS filters out some of the texture a hydraulic system would pass through. Knowing that it's a characteristic of the system, not a fault in your car, saves you chasing it.</p>
+
+        <h3>The three alignment angles</h3>
+        <figure>
+          <div class="figwrap">
+            <svg viewBox="0 0 660 190" role="img" aria-label="Diagrams of toe, camber and caster alignment angles">
+              <text class="t-lab" x="20" y="18">Toe — from above</text>
+              <line x1="30" y1="34" x2="30" y2="160" class="s-soft" stroke-width="1" stroke-dasharray="3 3"/>
+              <line x1="170" y1="34" x2="170" y2="160" class="s-soft" stroke-width="1" stroke-dasharray="3 3"/>
+              <rect x="24" y="52" width="13" height="40" rx="2" transform="rotate(-7 30 72)" class="s-grey" stroke-width="1.2"/>
+              <rect x="163" y="52" width="13" height="40" rx="2" transform="rotate(7 170 72)" class="s-grey" stroke-width="1.2"/>
+              <text class="t-small" x="100" y="62" text-anchor="middle">toe-in</text>
+              <path d="M62,110 L138,110" class="s-soft" stroke-width="1"/>
+              <rect x="24" y="118" width="13" height="40" rx="2" class="s-steelfill" stroke-width="1.2"/>
+              <rect x="163" y="118" width="13" height="40" rx="2" class="s-steelfill" stroke-width="1.2"/>
+              <text class="t-steel" x="100" y="142" text-anchor="middle">zero toe</text>
+              <text class="t-small" x="100" y="178" text-anchor="middle">stability vs. turn-in</text>
+              <line x1="210" y1="20" x2="210" y2="170" class="s-soft" stroke-width="1"/>
+              <text class="t-lab" x="235" y="18">Camber — from the front</text>
+              <line x1="240" y1="140" x2="400" y2="140" class="s-line" stroke-width="1.8"/>
+              <rect x="256" y="68" width="16" height="66" rx="2" transform="rotate(-9 264 101)" class="s-steelfill" stroke-width="1.2"/>
+              <line x1="264" y1="60" x2="264" y2="140" class="s-soft" stroke-width="1" stroke-dasharray="3 3"/>
+              <text class="t-steel" x="264" y="54" text-anchor="middle">negative</text>
+              <rect x="360" y="68" width="16" height="66" rx="2" class="s-grey" stroke-width="1.2"/>
+              <line x1="368" y1="60" x2="368" y2="140" class="s-soft" stroke-width="1" stroke-dasharray="3 3"/>
+              <text class="t-small" x="368" y="54" text-anchor="middle">zero</text>
+              <text class="t-small" x="320" y="162" text-anchor="middle">keeps the tyre flat</text>
+              <text class="t-small" x="320" y="178" text-anchor="middle">when the body rolls</text>
+              <line x1="430" y1="20" x2="430" y2="170" class="s-soft" stroke-width="1"/>
+              <text class="t-lab" x="455" y="18">Caster — from the side</text>
+              <line x1="460" y1="140" x2="640" y2="140" class="s-line" stroke-width="1.8"/>
+              <circle cx="550" cy="112" r="27" class="s-grey" stroke-width="1.4"/>
+              <line x1="568" y1="58" x2="536" y2="150" class="s-accline" stroke-width="2"/>
+              <line x1="550" y1="58" x2="550" y2="150" class="s-soft" stroke-width="1" stroke-dasharray="3 3"/>
+              <text class="t-acc" x="596" y="64" text-anchor="middle">steering axis</text>
+              <text class="t-small" x="550" y="162" text-anchor="middle">tilted back, so the wheel</text>
+              <text class="t-small" x="550" y="178" text-anchor="middle">self-centres like a trolley castor</text>
+            </svg>
+          </div>
+          <figcaption><b>Alignment is cheap and transformative.</b> If your car pulls to one side, feels nervous in a straight line, or is wearing one edge of a tyre, this is where to look first.</figcaption>
+        </figure>
+
+        <ul>
+          <li><strong>Toe</strong> — whether the wheels point slightly inward or outward, looking down from above. Toe-in adds straight-line stability; toe-out sharpens the initial response into a corner. Get it wrong and you scrub rubber off your tyres with every kilometre.</li>
+          <li><strong>Camber</strong> — how much the wheel leans in or out, looking from the front. Negative camber (top leaning inward) looks odd standing still, but as the body rolls in a corner the loaded outside tyre is pushed upright onto its full tread instead of rolling onto its outer shoulder.</li>
+          <li><strong>Caster</strong> — the backward tilt of the steering axis, viewed from the side. It's what makes the steering wheel want to return to centre on its own, and what makes the car track straight without constant correction. Same principle as the castor wheel on a shopping trolley.</li>
+        </ul>
+      </section>
+
+      <!-- ============ 8 ============ -->
+      <section id="brakes" data-nav="Brakes">
+        <p class="secnum">08</p>
+        <h2 class="sec">Brakes</h2>
+        <p class="sec-kicker">Brakes don't remove energy. They convert it into heat and then get rid of the heat.</p>
+
+        <p>A moving car holds kinetic energy, and energy can't be deleted. Braking converts it into <strong>heat</strong>, by rubbing friction material against spinning steel, and then sheds that heat into the air. Everything that goes wrong with brakes is a heat problem.</p>
+
+        <figure>
+          <div class="figwrap plate">
+            <!-- ILLUSTRATION: brake assembly cutaway -->
+            <svg viewBox="0 0 560 280" role="img" aria-label="Cutaway illustration of a brake: a ventilated disc with a caliper, pads and pistons, showing fluid pressure in and heat radiating out">
+              <!-- disc: two friction faces with vanes between -->
+              <rect x="246" y="30" width="20" height="200" class="s-metal" stroke-width="1.5"/>
+              <rect x="294" y="30" width="20" height="200" class="s-metal" stroke-width="1.5"/>
+              <g class="s-soft" stroke-width="1.4">
+                <line x1="266" y1="46" x2="294" y2="46"/><line x1="266" y1="70" x2="294" y2="70"/>
+                <line x1="266" y1="94" x2="294" y2="94"/><line x1="266" y1="118" x2="294" y2="118"/>
+                <line x1="266" y1="142" x2="294" y2="142"/><line x1="266" y1="166" x2="294" y2="166"/>
+                <line x1="266" y1="190" x2="294" y2="190"/><line x1="266" y1="214" x2="294" y2="214"/>
+              </g>
+              <text class="t-plate" x="280" y="248" text-anchor="middle">ventilated disc</text>
+              <text class="t-small" x="280" y="261" text-anchor="middle">air is pumped through the middle</text>
+              <!-- hub / rotation -->
+              <line x1="280" y1="30" x2="280" y2="12" class="s-line" stroke-width="2"/>
+              <text class="t-small" x="288" y="18">spins with the wheel</text>
+              <!-- caliper body -->
+              <path d="M186,70 L186,190 L246,190 L246,172 L212,172 L212,88 L246,88 L246,70 Z" class="s-grey" stroke-width="1.5"/>
+              <path d="M374,70 L374,190 L314,190 L314,172 L348,172 L348,88 L314,88 L314,70 Z" class="s-grey" stroke-width="1.5"/>
+              <path d="M186,70 L374,70" class="s-grey" stroke-width="1.5"/>
+              <!-- pads -->
+              <rect x="232" y="96" width="12" height="68" rx="2" class="s-accfill" opacity="0.85"/>
+              <rect x="316" y="96" width="12" height="68" rx="2" class="s-accfill" opacity="0.85"/>
+              <!-- pistons -->
+              <rect x="212" y="112" width="20" height="36" rx="3" class="s-metal" stroke-width="1.4"/>
+              <rect x="328" y="112" width="20" height="36" rx="3" class="s-metal" stroke-width="1.4"/>
+              <!-- squeeze arrows -->
+              <line x1="196" y1="130" x2="210" y2="130" class="s-accline" stroke-width="2.2"/>
+              <polygon points="209,125 209,135 217,130" class="s-accfill"/>
+              <line x1="364" y1="130" x2="350" y2="130" class="s-accline" stroke-width="2.2"/>
+              <polygon points="351,125 351,135 343,130" class="s-accfill"/>
+              <!-- fluid line -->
+              <path d="M186,110 L120,110 L120,76" class="s-steelline" stroke-width="3"/>
+              <text class="t-steel" x="116" y="68" text-anchor="middle">brake fluid in</text>
+              <text class="t-small" x="116" y="56" text-anchor="middle">from the pedal</text>
+              <!-- heat -->
+              <text class="t-acc" x="446" y="222" text-anchor="middle">heat out</text>
+              <g class="s-accline" stroke-width="1.6">
+                <path d="M400,208 q10,-8 20,0 q10,8 20,0"/>
+                <path d="M400,196 q10,-8 20,0 q10,8 20,0"/>
+              </g>
+              <!-- labels -->
+              <path d="M238,96 L238,54 L420,54" class="s-lead"/>
+              <text class="t-plate" x="424" y="57">brake pads</text>
+              <text class="t-small" x="424" y="70">the wearing part</text>
+              <path d="M348,130 L420,130" class="s-lead"/>
+              <text class="t-plate" x="424" y="120">pistons</text>
+              <text class="t-small" x="424" y="133">pushed by fluid pressure</text>
+              <path d="M374,180 L420,168" class="s-lead"/>
+              <text class="t-plate" x="424" y="171">caliper</text>
+            </svg>
+          </div>
+          <figcaption><b>One corner of your braking system.</b> Your car has ventilated discs at all four corners — cast with internal vanes so air is pumped through the middle of the disc as it spins, carrying heat away.</figcaption>
+        </figure>
+
+        <h3>The hydraulic chain</h3>
+        <p>Your foot can't generate enough force to stop a car, so the system multiplies it:</p>
+        <ol>
+          <li>The pedal pushes a rod into the <strong>master cylinder</strong>, via a vacuum servo that multiplies your effort — this is why the pedal goes hard when the engine isn't running.</li>
+          <li>That pushes <strong>brake fluid</strong> through steel lines. Liquids don't compress, so the push arrives at the other end essentially undiminished.</li>
+          <li>At each wheel the fluid pushes pistons in a <strong>caliper</strong>, which squeezes two <strong>pads</strong> against the spinning <strong>disc</strong>.</li>
+          <li>Friction between pad and disc turns motion into heat, which the disc sheds into the air.</li>
+        </ol>
+
+        <div class="box plain">
+          <span class="lab">Why brake fluid has a replacement interval but no wear</span>
+          <p>Brake fluid is <strong>hygroscopic</strong>: it absorbs water out of the air, slowly, through seals and hoses, even if you never drive. Water in the fluid lowers its boiling point.</p>
+          <p>That matters because hot brakes heat the fluid closest to them. If it boils, you now have compressible vapour in a system that only works because liquid doesn't compress — so the pedal goes long and soft and the brakes stop working, usually at the worst possible moment. Fluid is replaced on <strong>time</strong>, not on kilometres, because what degrades it is the calendar.</p>
+        </div>
+
+        <h3>Fade, and the two kinds of it</h3>
+        <ul>
+          <li><strong>Pad fade.</strong> The pad material gets hotter than its design range and its coefficient of friction falls. The pedal still feels firm but the car won't slow as hard. Common on long descents and track sessions.</li>
+          <li><strong>Fluid fade.</strong> The fluid itself boils, as above. The pedal travels further and feels spongy. More serious.</li>
+        </ul>
+        <p>Pad choice is a real trade-off, not a quality ladder. Street pads bite well from cold and are quiet. Track pads need to be hot before they work properly and chew through discs when cold — fitting them to a daily-driven car makes it worse at the thing it does 95% of the time.</p>
+
+        <h3>The electronics: ABS, TRC and VSC</h3>
+        <ul>
+          <li><strong>ABS</strong> (anti-lock braking). A locked wheel is a skidding wheel, and a skidding wheel can't steer. ABS senses a wheel about to lock and releases and re-applies that brake many times a second. In an emergency stop: press hard, keep pressing, and steer. The grinding noise and pedal pulsing are it working.</li>
+          <li><strong>TRC</strong> (traction control). Stops the driven wheels spinning under power by cutting throttle or braking the spinning wheel.</li>
+          <li><strong>VSC</strong> (vehicle stability control). Compares where you're steering with where the car is actually going, and if they disagree, brakes individual wheels to rotate the car back into line.</li>
+        </ul>
+        <p>These cars have a <strong>VSC Sport</strong> mode that raises the intervention thresholds, and allow the systems to be switched off entirely. The off switch is part of what makes them good cars to learn in — in a controlled environment, with space, and ideally supervision.</p>
+      </section>
+
+      <!-- ============ 9 ============ -->
+      <section id="tyres" data-nav="Wheels &amp; tyres">
+        <p class="secnum">09</p>
+        <h2 class="sec">Wheels and tyres</h2>
+        <p class="sec-kicker">Every force your car can produce passes through four patches of rubber the size of your palm.</p>
+
+        <p>This is the most under-appreciated fact in car ownership. Engine, brakes, suspension, steering, stability control — all of it is funnelled through four <strong>contact patches</strong>. Tyres are the highest-leverage thing on your car and the easiest to neglect.</p>
+
+        <figure>
+          <div class="figwrap plate">
+            <!-- ILLUSTRATION: contact patches -->
+            <svg viewBox="0 0 600 330" role="img" aria-label="Contact patches drawn to scale on a plan view, with the arithmetic that sets their size">
+  <text class="t-small" x="300" y="16" text-anchor="middle">your car from above · the four patches are drawn to the same scale as the car</text>
+  <path d="M96,44 C140,40 200,38 250,38 L330,38 C372,40 410,46 428,56
+           C438,64 438,174 428,182 C410,192 372,198 330,200 L250,200
+           C200,200 140,198 96,194 C76,190 72,48 96,44 Z"
+        class="s-fill" stroke="var(--rule)" stroke-width="1.6"/>
+  <path d="M212,46 C248,44 300,44 330,48 L330,190 C300,194 248,194 212,192 Z"
+        class="s-steelfill" stroke-width="1.2" opacity=".5"/>
+  <text class="t-small" x="271" y="122" text-anchor="middle">cabin</text>
+  <g class="s-accfill">
+    <rect x="140" y="42" width="5.8" height="19.3" rx="1"/>
+    <rect x="140" y="178" width="5.8" height="19.3" rx="1"/>
+    <rect x="370" y="42" width="5.8" height="19.3" rx="1"/>
+    <rect x="370" y="178" width="5.8" height="19.3" rx="1"/>
+  </g>
+  <path d="M143,40 L143,26 L178,26" class="s-lead"/>
+  <text class="t-acc" x="182" y="29">one contact patch, to scale</text>
+  <text class="t-small" x="455" y="60">Everything the car can</text>
+  <text class="t-small" x="455" y="73">do — accelerate, brake,</text>
+  <text class="t-small" x="455" y="86">turn — is transmitted</text>
+  <text class="t-small" x="455" y="99">through those four</text>
+  <text class="t-small" x="455" y="112">small rectangles.</text>
+  <!-- blow-up -->
+  <text class="t-lab" x="455" y="138">Enlarged</text>
+  <rect x="455" y="158" width="23" height="77" rx="2" class="s-accfill" opacity=".85"/>
+  <line x1="455" y1="150" x2="478" y2="150" class="s-steelline" stroke-width="1.2"/>
+  <line x1="455" y1="146" x2="455" y2="154" class="s-steelline" stroke-width="1.2"/>
+  <line x1="478" y1="146" x2="478" y2="154" class="s-steelline" stroke-width="1.2"/>
+  <line x1="490" y1="158" x2="490" y2="235" class="s-steelline" stroke-width="1.2"/>
+  <line x1="486" y1="158" x2="494" y2="158" class="s-steelline" stroke-width="1.2"/>
+  <line x1="486" y1="235" x2="494" y2="235" class="s-steelline" stroke-width="1.2"/>
+  <text class="t-steel" x="500" y="186">215 mm</text>
+  <text class="t-steel" x="500" y="199">across</text>
+  <text class="t-steel" x="500" y="221">65 mm</text>
+  <text class="t-steel" x="500" y="234">along</text>
+  <!-- arithmetic -->
+  <rect x="72" y="226" width="350" height="92" rx="5" class="s-grey" stroke-width="1.3"/>
+  <text class="t-lab" x="88" y="248">Why that size, and not some other</text>
+  <text class="t-small" x="88" y="266">The air inside holds the car up, so each patch grows until it</text>
+  <text class="t-small" x="88" y="279">is just big enough to carry its share of the weight:</text>
+  <text class="t-plate" x="88" y="302">310 kg per tyre ÷ 220 kPa ≈ 138 cm², about 215 × 65 mm</text>
+</svg>
+          </div>
+          <figcaption><b>To scale, more or less.</b> A 1,240 kg car's entire ability to accelerate, brake and turn is transmitted through about four palm-sized areas of rubber — which is why pressure and tread condition matter so much more than most people assume.</figcaption>
+        </figure>
+
+        <h3>Reading the sidewall</h3>
+        <figure>
+          <div class="figwrap">
+            <svg viewBox="0 0 660 250" role="img" aria-label="Breakdown of the tyre size code 215/45 R17 91W with each element explained">
+              <rect x="40" y="56" width="124" height="22" rx="4" class="s-inkfill"/>
+              <rect x="52" y="78" width="14" height="74" class="s-grey" stroke-width="1.2"/>
+              <rect x="138" y="78" width="14" height="74" class="s-grey" stroke-width="1.2"/>
+              <rect x="52" y="152" width="100" height="18" rx="3" class="s-steelfill" stroke-width="1.4"/>
+              <text class="t-small" x="102" y="165" text-anchor="middle">rim · 17&quot;</text>
+              <line x1="40" y1="44" x2="164" y2="44" stroke="var(--accent)" stroke-width="1.4"/>
+              <line x1="40" y1="40" x2="40" y2="48" stroke="var(--accent)" stroke-width="1.4"/>
+              <line x1="164" y1="40" x2="164" y2="48" stroke="var(--accent)" stroke-width="1.4"/>
+              <text class="t-acc" x="102" y="35" text-anchor="middle">215 mm tread</text>
+              <line x1="180" y1="78" x2="180" y2="152" stroke="var(--steel)" stroke-width="1.4"/>
+              <line x1="176" y1="78" x2="184" y2="78" stroke="var(--steel)" stroke-width="1.4"/>
+              <line x1="176" y1="152" x2="184" y2="152" stroke="var(--steel)" stroke-width="1.4"/>
+              <text class="t-steel" x="190" y="110">sidewall</text>
+              <text class="t-steel" x="190" y="124">~97 mm</text>
+              <text class="t-small" x="102" y="196" text-anchor="middle">cross-section through the tyre</text>
+              <text class="t-big" x="300" y="70">215 / 45 R 17 91W</text>
+              <line x1="302" y1="80" x2="338" y2="80" stroke="var(--accent)" stroke-width="2"/>
+              <text class="t-small" x="302" y="96">Tread width in millimetres.</text>
+              <line x1="356" y1="80" x2="380" y2="80" stroke="var(--accent)" stroke-width="2"/>
+              <text class="t-small" x="356" y="118">Aspect ratio: sidewall height is 45%</text>
+              <text class="t-small" x="356" y="131">of 215 mm, so about 97 mm.</text>
+              <line x1="392" y1="80" x2="404" y2="80" stroke="var(--accent)" stroke-width="2"/>
+              <text class="t-small" x="392" y="153">Radial construction. Effectively</text>
+              <text class="t-small" x="392" y="166">every modern car tyre.</text>
+              <line x1="416" y1="80" x2="440" y2="80" stroke="var(--accent)" stroke-width="2"/>
+              <text class="t-small" x="416" y="188">Rim diameter in inches — the one</text>
+              <text class="t-small" x="416" y="201">imperial number in a metric code.</text>
+              <line x1="452" y1="80" x2="492" y2="80" stroke="var(--accent)" stroke-width="2"/>
+              <text class="t-small" x="452" y="223">Load index and speed rating:</text>
+              <text class="t-small" x="452" y="236">how much weight, how fast.</text>
+            </svg>
+          </div>
+          <figcaption><b>The standard size on 17-inch wheels.</b> Base-model cars came on 16s, and the BRZ generally got 17s as standard where the base 86 had 16s — so check the placard in your own driver's door jamb rather than assuming. Match all four tyres: mixing sizes or constructions front to rear changes the car's balance.</figcaption>
+        </figure>
+
+        <h3>The date code nobody checks</h3>
+        <p>Somewhere on the sidewall is a <strong>DOT</strong> code ending in four digits. The first two are the week, the last two are the year: <code>3621</code> means the tyre was built in week 36 of 2021. Rubber hardens and loses grip as it ages regardless of tread depth. A tyre with plenty of tread and seven years on it is a worse tyre than its tread suggests — and on a car from 2012 that may have sat around, it's worth a look.</p>
+
+        <h3>Pressure</h3>
+        <p>Check pressures <strong>cold</strong> — before driving, or at least a couple of hours after. Driving heats the air inside and raises the reading, so topping up warm tyres leaves you underinflated once they cool.</p>
+        <ul>
+          <li><strong>Underinflated:</strong> the sidewall flexes too much, the tyre squirms under steering, both edges of the tread wear faster than the middle, and the flexing builds heat — which is how tyres fail at speed.</li>
+          <li><strong>Overinflated:</strong> harsh ride, a smaller contact patch, and wear concentrated down the centre strip.</li>
+        </ul>
+        <p>A cheap gauge and five minutes a month improves how your car drives more than most money you could spend on it.</p>
+
+        <div class="box yours">
+          <span class="lab">On your car — the tyres are a deliberate choice</span>
+          <p>These cars were fitted with narrow, modest-grip touring tyres on purpose. With 147 kW and low-grip rubber, the car reaches its limits at speeds a human can process, and tells you clearly as it gets there. That's the entire design brief: a car that teaches.</p>
+          <p>Fitting much grippier tyres is the most effective single upgrade for lap times and wet-weather safety, and it genuinely transforms the car — but understand the trade. Higher limits arrive faster, with less warning, and the car becomes less communicative at road speeds. Plenty of owners deliberately keep modest tyres for exactly that reason. Either choice is defensible; drifting into one without realising is not.</p>
+        </div>
+      </section>
+
+      <!-- ============ 10 ============ -->
+      <section id="fluids" data-nav="Fluids">
+        <p class="secnum">10</p>
+        <h2 class="sec">Fluids</h2>
+        <p class="sec-kicker">Six liquids keep your car alive, and for each one the specification matters more than the brand.</p>
+
+        <p>"Oil is oil" is the most expensive wrong belief in car ownership. Every fluid below has a specification your car was engineered around. Meeting that specification is what matters; which reputable brand you buy mostly doesn't.</p>
+
+        <div class="box plain">
+          <span class="lab">Toyota or Subaru</span>
+          <p>The specifications below are the same fluids for the same hardware, but the two makers sell them under their own names and part numbers — Toyota Genuine against Subaru Genuine. Either brand's product, or any oil meeting the same standard, is what the part needs. Use whichever your workshop stocks; just match the standard, not the badge.</p>
+        </div>
+
+        <div class="tablewrap">
+          <table>
+            <thead>
+              <tr><th>Fluid</th><th>Specification</th><th>What it does, and why the spec matters</th></tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Engine oil</td>
+                <td><span class="spec">0W-20</span> full synthetic. Roughly 5.2–5.5 L with a filter change</td>
+                <td>Lubricates, cools, cleans and seals. The two numbers are viscosity: <strong>0W</strong> is how it flows when cold (lower = thinner = reaches bearings faster on a cold start, when most wear happens), <strong>20</strong> is how thick it stays when hot. This engine's oil galleries and bearing clearances were designed around a thin oil. Going thicker because it "sounds safer" reduces flow where the engine needs it.</td>
+              </tr>
+              <tr>
+                <td>Coolant</td>
+                <td><span class="spec">Super Long Life Coolant</span>, pre-mixed 50/50</td>
+                <td>Carries heat from the engine to the radiator. Water alone boils too low, freezes, and corrodes aluminium. Coolant raises the boiling point, lowers the freezing point, and carries corrosion inhibitors matched to the metals in the engine. Mixing incompatible coolant types can gel. Never open the system hot.</td>
+              </tr>
+              <tr>
+                <td>Brake fluid</td>
+                <td><span class="spec">DOT 3</span> or DOT 4 meeting the same standard</td>
+                <td>Transmits your pedal force to the calipers. Also operates your clutch — it shares the same reservoir. Replace roughly every two years regardless of mileage, because it absorbs water from the air and its boiling point falls.</td>
+              </tr>
+              <tr>
+                <td>Manual gearbox oil</td>
+                <td><span class="spec">75W API GL-4</span></td>
+                <td>Lubricates gears and synchronisers. Here the spec genuinely matters: GL-5 oils contain more aggressive sulphur-phosphorus additives that can attack the brass and bronze used in synchro rings. A GL-5 oil is not "stronger", it's wrong for this gearbox.</td>
+              </tr>
+              <tr>
+                <td>Rear diff oil</td>
+                <td><span class="spec">75W-85 API GL-5</span>, LSD-rated</td>
+                <td>Lubricates the hypoid gears and the limited-slip mechanism. A limited-slip diff relies on controlled friction, so it needs an oil formulated for it — the wrong oil causes chatter on slow tight turns and accelerates wear.</td>
+              </tr>
+              <tr>
+                <td>Auto trans fluid</td>
+                <td><span class="spec">Toyota ATF WS</span> (automatic cars only)</td>
+                <td>Transmits drive through the torque converter and operates the clutch packs. "WS" means "world standard" and it is not interchangeable with older Toyota ATF types.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="box watch">
+          <span class="lab">The one habit that matters most on this engine</span>
+          <p>The FA20 is known for using some oil between services — more than you'd expect from a modern Toyota or Subaru. It isn't necessarily a fault, but it means <strong>you cannot assume the level is fine just because the car was serviced recently.</strong></p>
+          <p>Low oil plus sustained hard cornering is the known way these engines die. In a corner the oil in the sump slides to one side; if the level is already low, the pump can momentarily draw air instead of oil, and the bearings run dry. <strong>Check the dipstick at least monthly, and always before a spirited drive or a track day.</strong> Warm the engine, park level, shut it off, wait about five minutes for the oil to drain back, then check. This single habit is the cheapest engine insurance you will ever buy.</p>
+        </div>
+      </section>
+
+      <!-- ============ 11 ============ -->
+      <section id="electrics" data-nav="Electrics">
+        <p class="secnum">11</p>
+        <h2 class="sec">Electrics, briefly</h2>
+        <p class="sec-kicker">Four parts explain almost every electrical problem you'll meet.</p>
+        <ul>
+          <li><strong>Battery.</strong> A 12-volt store of energy. Its real job is huge current for a few seconds to spin the starter, plus running your electronics when the engine is off. Batteries fail from sitting unused as much as from use.</li>
+          <li><strong>Starter motor.</strong> A powerful electric motor that spins the engine fast enough for it to start running on its own. One click and nothing usually means it isn't getting enough current — often a flat battery or a corroded terminal rather than a dead starter.</li>
+          <li><strong>Alternator.</strong> Driven by a belt off the engine. Once running, it powers everything and recharges the battery. If the battery light comes on while driving, you're running on stored charge only, and you have limited time.</li>
+          <li><strong>Fuses and relays.</strong> A fuse is a deliberate weak point that melts before your wiring does. If one thing stops working, check its fuse before assuming the worst. There's a fuse box under the bonnet and another in the cabin; your owner's manual maps both.</li>
+        </ul>
+        <div class="box yours">
+          <span class="lab">On your car</span>
+          <p>These cars have a small battery, part of the weight-saving brief, and one that sits for a fortnight can struggle to start. If yours isn't a daily driver, a cheap trickle charger or battery maintainer is worth more than a new battery every two years.</p>
+        </div>
+      </section>
+
+      <!-- ============ 12 ============ -->
+      <section id="maintenance" data-nav="Maintenance">
+        <p class="secnum">12</p>
+        <h2 class="sec">Maintenance you can actually do</h2>
+        <p class="sec-kicker">Five minutes of looking beats a thousand dollars of fixing.</p>
+
+        <div class="checks">
+          <div class="check">
+            <p class="freq">Every fuel stop · 60 seconds</p>
+            <ul>
+              <li>Walk around the car. Look at all four tyres — one soft tyre is obvious if you look.</li>
+              <li>Glance under the car where it was parked for fresh drips.</li>
+              <li>Notice any new noise, smell or vibration from the last drive. New symptoms are cheap; ignored symptoms aren't.</li>
+            </ul>
+          </div>
+          <div class="check">
+            <p class="freq">Monthly · 10 minutes</p>
+            <ul>
+              <li><strong>Engine oil level</strong> on the dipstick (see fluids for how).</li>
+              <li><strong>Tyre pressures</strong>, cold, against the door-jamb placard. Include the spare if you have one.</li>
+              <li><strong>Coolant level</strong> in the translucent reservoir — cold engine only.</li>
+              <li><strong>Brake fluid level</strong> in its reservoir. A falling level means a leak or worn pads.</li>
+              <li>All lights, including brake lights and indicators. Get someone to watch, or use a reflection.</li>
+              <li>Tread depth — the legal minimum in New Zealand is 1.5 mm, but wet grip drops off well before that.</li>
+            </ul>
+          </div>
+          <div class="check">
+            <p class="freq">On schedule · book it in</p>
+            <ul>
+              <li><strong>Engine oil and filter.</strong> Your manufacturer's interval is in the back of your owner's manual, commonly 10,000–12,000 km or 12 months, whichever comes first. If you drive it hard or track it, halve it.</li>
+              <li><strong>Brake fluid</strong> about every two years.</li>
+              <li><strong>Air filter and cabin filter</strong> per the schedule, sooner on dusty roads.</li>
+              <li><strong>Spark plugs</strong> — iridium, long-life, around 100,000 km.</li>
+              <li><strong>Coolant</strong> — long first interval, shorter after.</li>
+              <li><strong>Gearbox and diff oil</strong> aren't on the normal schedule, but many owners change them around 100,000 km, and much sooner if the car is tracked.</li>
+              <li><strong>Wheel alignment</strong> after any kerb strike, new tyres, or if it pulls or wears unevenly.</li>
+              <li><strong>Tyre rotation.</strong> On a rear-drive car the front and rear tyres wear differently; swapping front-to-back on the same side evens it out, if your tyres are the same size and not directional.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="box plain">
+          <span class="lab">Two documents worth an hour of your time</span>
+          <p>Your <strong>owner's manual</strong> contains the fluid specs, capacities, intervals, fuse maps and the dipstick procedure for your exact car. If it's missing from the glovebox, the PDF is easy to find — search for the owner's manual for your model, year and brand.</p>
+          <p>Your <strong>service history</strong> tells you what's actually been done, and on a car this age that's worth more than the odometer reading. If you don't have it, start one today: a cheap notebook with date, kilometres and what was done.</p>
+        </div>
+      </section>
+
+      <!-- ============ 13 ============ -->
+      <section id="quirks" data-nav="Known quirks">
+        <p class="secnum">13</p>
+        <h2 class="sec">Known quirks of a first-generation car</h2>
+        <p class="sec-kicker">What's a fault, what's a characteristic, and the one thing you should check this week.</p>
+
+        <div class="box watch">
+          <span class="lab">Check this one first — the valve spring recall</span>
+          <p>Both makers recalled early first-generation cars over valve springs that could fracture. A valve spring's job is to close the valve; if one breaks, the valve can stay open, meet a piston, and destroy the engine. The fix is free, and it is <strong>the single most important thing to verify about any early car of this family.</strong></p>
+          <p><strong>The windows are different for each brand, so check against yours:</strong></p>
+          <ul>
+            <li><strong>Toyota.</strong> Toyota New Zealand recalled 349 Toyota 86s built between <strong>10 April 2012 and 16 May 2013</strong>. Toyota Australia ran the equivalent campaign over cars produced April 2012 to July 2013.</li>
+            <li><strong>Subaru.</strong> Subaru's campaign covered 2013 model year BRZs built between <strong>9 December 2011 and 2 July 2013</strong> — an earlier start than the Toyota window — alongside various Impreza, XV and Forester models. In the US it ran as recall WTY-84; in Australia as campaign SI0491.</li>
+          </ul>
+          <p><strong>What to do:</strong> find your <strong>VIN</strong> (base of the windscreen on the driver's side, on the door jamb sticker, and on your registration papers) and give it to a dealer for <em>your</em> brand — Toyota for an 86, GT86 or FR-S, Subaru for a BRZ. Not all cars in a production range were affected, so the VIN is the only way to know. If your car came into the country as a used import, this matters even more: the work may have been done overseas, or not at all. Get the answer in writing for your service file.</p>
+        </div>
+
+        <h4>Oil consumption</h4>
+        <p>Covered in fluids, and the most important ongoing habit on this engine. These engines use oil; check the level monthly and before hard driving.</p>
+
+        <h4>Cold second gear</h4>
+        <p>A stiff, baulky shift into second when the gearbox is cold is normal for this car. Warm it up, shift slowly, or skip to third for the first kilometre. Not a fault, and not something to force.</p>
+
+        <h4>The fuel pump chirp</h4>
+        <p>Many of these cars make a faint rhythmic chirping or cricket-like noise from the rear when stationary. It's a known characteristic of the fuel pump assembly on this generation and generally harmless. Note that the fuel pump <em>recall</em> you'll find online applied to 2018–19 cars, not early first-generation ones — different issue, different years.</p>
+
+        <h4>The torque dip</h4>
+        <p>Not a fault. See the engine section. Rev it out.</p>
+
+        <h4>Everything that's simply 13 years old</h4>
+        <p>Independent of any model-specific issue, a car of this age with original parts will have tired <strong>suspension bushes</strong>, <strong>dampers</strong> past their best, <strong>brake fluid</strong> that may never have been changed, an aging <strong>battery</strong>, perished <strong>rubber hoses</strong>, and possibly <strong>tyres</strong> that are old even if they look fine. None of these are dramatic failures. Collectively they're most of the difference between one of these that feels sharp and one that feels tired — and they're also where your money goes furthest.</p>
+      </section>
+
+      <!-- ============ 14 ============ -->
+      <section id="glossary" data-nav="Glossary">
+        <p class="secnum">14</p>
+        <h2 class="sec">Glossary</h2>
+        <p class="sec-kicker">Every term in this guide, in one place. Type to filter.</p>
+        <label for="gq" style="position:absolute;left:-9999px">Filter glossary terms</label>
+        <input type="text" id="gq" class="gsearch" placeholder="Filter terms — try &quot;oil&quot; or &quot;diff&quot;" autocomplete="off">
+        <dl class="glist" id="glist">
+          <div class="gitem"><dt>ABS</dt><dd>Anti-lock braking system. Releases and re-applies a brake rapidly to stop a wheel locking, so you can still steer.</dd></div>
+          <div class="gitem"><dt>Alternator</dt><dd>Belt-driven generator that powers the car's electrics and recharges the battery while the engine runs.</dd></div>
+          <div class="gitem"><dt>Anti-roll bar</dt><dd>Torsion bar linking left and right wheels on an axle. Resists body roll without stiffening the straight-line ride.</dd></div>
+          <div class="gitem"><dt>Aspect ratio</dt><dd>The second number in a tyre size. Sidewall height as a percentage of tread width.</dd></div>
+          <div class="gitem"><dt>AVCS</dt><dd>Subaru's name for its variable valve timing system, fitted to the FA20.</dd></div>
+          <div class="gitem"><dt>Bore</dt><dd>The diameter of a cylinder. 86 mm on this engine.</dd></div>
+          <div class="gitem"><dt>Boxer / flat-four</dt><dd>Engine layout with cylinders horizontal, opposing each other. Short and low, which lowers the car's centre of gravity.</dd></div>
+          <div class="gitem"><dt>BRZ</dt><dd>Subaru's version of this car, chassis code ZC6. Usually explained as Boxer, Rear-wheel drive, Zenith.</dd></div>
+          <div class="gitem"><dt>Caliper</dt><dd>The clamp at each wheel that houses the pistons and squeezes the brake pads onto the disc.</dd></div>
+          <div class="gitem"><dt>Camber</dt><dd>How far a wheel leans in or out when viewed from the front.</dd></div>
+          <div class="gitem"><dt>Camshaft</dt><dd>Rotating shaft with lobes that push the valves open at the right moment.</dd></div>
+          <div class="gitem"><dt>Caster</dt><dd>Backward tilt of the steering axis viewed from the side. Gives self-centring and straight-line stability.</dd></div>
+          <div class="gitem"><dt>Clutch</dt><dd>Friction disc that connects and disconnects the engine from the gearbox. Clamped at rest; the pedal releases it.</dd></div>
+          <div class="gitem"><dt>Compression ratio</dt><dd>Cylinder volume at the bottom of the stroke divided by volume at the top. 12.5:1 on this engine.</dd></div>
+          <div class="gitem"><dt>Contact patch</dt><dd>The area of tyre actually touching the road. Roughly palm-sized, times four.</dd></div>
+          <div class="gitem"><dt>D-4S</dt><dd>Toyota's injection system using both direct and port injectors, giving direct injection's power without its carbon build-up.</dd></div>
+          <div class="gitem"><dt>Damper</dt><dd>Shock absorber. Controls how quickly the spring is allowed to move, turning that motion into heat.</dd></div>
+          <div class="gitem"><dt>Differential</dt><dd>Gearset that lets the two driven wheels turn at different speeds through a corner while still driving both.</dd></div>
+          <div class="gitem"><dt>Displacement</dt><dd>Total volume swept by all the pistons. 1,998 cc on this engine.</dd></div>
+          <div class="gitem"><dt>DOHC</dt><dd>Double overhead camshaft. Two camshafts per cylinder bank, one for inlet valves and one for exhaust.</dd></div>
+          <div class="gitem"><dt>DOT code</dt><dd>Moulded tyre marking ending in four digits: week and year of manufacture.</dd></div>
+          <div class="gitem"><dt>EPS</dt><dd>Electric power steering. An electric motor assists the steering rack instead of a hydraulic pump.</dd></div>
+          <div class="gitem"><dt>FA20 / 4U-GSE</dt><dd>This car's engine. Subaru's code and Toyota's code for the same 2.0-litre flat-four.</dd></div>
+          <div class="gitem"><dt>FA24</dt><dd>The 2.4-litre engine in the 2022-onward GR86 and second-generation BRZ. Different car, different figures.</dd></div>
+          <div class="gitem"><dt>Fade</dt><dd>Loss of braking from heat — either the pad material losing friction, or the fluid boiling and going compressible.</dd></div>
+          <div class="gitem"><dt>Final drive</dt><dd>The fixed gear ratio inside the differential, applied in every gear on top of the gearbox ratio.</dd></div>
+          <div class="gitem"><dt>FR layout</dt><dd>Front engine, rear-wheel drive. The front wheels only steer; the rear wheels only drive.</dd></div>
+          <div class="gitem"><dt>FR-S</dt><dd>The North American version, sold under Toyota's Scion brand from 2013 to 2016, then renamed Toyota 86.</dd></div>
+          <div class="gitem"><dt>GT86</dt><dd>The European and UK name for the Toyota version.</dd></div>
+          <div class="gitem"><dt>Hygroscopic</dt><dd>Absorbs water from the air. Why brake fluid is replaced on time rather than mileage.</dd></div>
+          <div class="gitem"><dt>Knock</dt><dd>Fuel igniting from pressure and heat before the spark fires. Destructive; resisted by high-octane fuel.</dd></div>
+          <div class="gitem"><dt>LSD</dt><dd>Limited-slip differential. Allows the speed difference a corner needs but limits it, biasing torque to the wheel with grip.</dd></div>
+          <div class="gitem"><dt>MacPherson strut</dt><dd>Suspension design where the damper forms part of the wheel upright. Used at the front of these cars.</dd></div>
+          <div class="gitem"><dt>Naturally aspirated</dt><dd>No turbo or supercharger. Air enters at atmospheric pressure. Linear response; power comes from revs.</dd></div>
+          <div class="gitem"><dt>Octane / RON</dt><dd>A fuel's resistance to igniting under pressure. These cars are specified for 98 RON.</dd></div>
+          <div class="gitem"><dt>Oversteer</dt><dd>Rear tyres lose grip first. The back slides wide and the car rotates more than you asked.</dd></div>
+          <div class="gitem"><dt>Power</dt><dd>Torque multiplied by engine speed. How quickly work gets done. 147 kW at 7,000 rpm.</dd></div>
+          <div class="gitem"><dt>Spring rate</dt><dd>How much force it takes to compress a spring a given distance. Newtons per millimetre. The main tuning difference between the Toyota and the Subaru.</dd></div>
+          <div class="gitem"><dt>Stroke</dt><dd>How far the piston travels between top and bottom. 86 mm, equal to the bore.</dd></div>
+          <div class="gitem"><dt>Timing chain</dt><dd>Links the crankshaft to the camshafts so valves and pistons never collide. Yours is a chain, not a belt — no replacement interval.</dd></div>
+          <div class="gitem"><dt>Toe</dt><dd>Whether the wheels point slightly in or out viewed from above. Affects stability, turn-in and tyre wear.</dd></div>
+          <div class="gitem"><dt>Torque</dt><dd>Twisting force. How hard the engine can shove. 205 Nm at 6,400–6,600 rpm.</dd></div>
+          <div class="gitem"><dt>Torsen</dt><dd>Torque-sensing limited-slip differential using worm gears. Fitment varied by market and trim.</dd></div>
+          <div class="gitem"><dt>Understeer</dt><dd>Front tyres lose grip first. You add steering and the car runs wide anyway.</dd></div>
+          <div class="gitem"><dt>Variable valve timing</dt><dd>Shifting when the valves open and close to suit engine speed.</dd></div>
+          <div class="gitem"><dt>VIN</dt><dd>Vehicle identification number. Your car's unique serial, used to check recalls and order correct parts.</dd></div>
+          <div class="gitem"><dt>Viscosity</dt><dd>How thick an oil is. In 0W-20, the 0W describes cold flow and the 20 describes thickness when hot.</dd></div>
+          <div class="gitem"><dt>VSC</dt><dd>Vehicle stability control. Brakes individual wheels and cuts throttle when the car isn't going where you're steering.</dd></div>
+          <div class="gitem"><dt>Weight transfer</dt><dd>Load shifting between tyres as you brake, accelerate or turn. The basis of nearly every driving technique.</dd></div>
+          <div class="gitem"><dt>ZC6</dt><dd>The chassis code for the first-generation Subaru BRZ.</dd></div>
+          <div class="gitem"><dt>ZN6</dt><dd>The chassis code for the first-generation Toyota 86, GT86 and Scion FR-S.</dd></div>
+        </dl>
+        <p class="gempty" id="gempty" hidden>No terms match that.</p>
+      </section>
+
+      <!-- ============ 15 ============ -->
+      <section id="next" data-nav="Where next">
+        <p class="secnum">15</p>
+        <h2 class="sec">Where to go next</h2>
+        <p class="sec-kicker">You now have the vocabulary. These are the next layers down.</p>
+
+        <div class="nextgrid">
+          <div class="nextcard"><h4>Do the three basics</h4><p>Check your oil, set your tyre pressures, and get your VIN checked for the valve spring recall with the right brand's dealer. Doing these once converts this page from reading into owning.</p></div>
+          <div class="nextcard"><h4>Forced induction</h4><p>Turbochargers and superchargers: how they make more power, why they change throttle response, and what intercooling and boost pressure actually mean.</p></div>
+          <div class="nextcard"><h4>The ECU and sensors</h4><p>How the computer decides fuel and spark from oxygen, knock, air-flow and crank-position sensors — and what a check engine light is really telling you.</p></div>
+          <div class="nextcard"><h4>OBD2 diagnostics</h4><p>A cheap Bluetooth reader and your phone will show live engine data and read fault codes. The most useful small spend a curious owner can make.</p></div>
+          <div class="nextcard"><h4>Suspension geometry</h4><p>Roll centres, bump steer, anti-dive, and why lowering a car badly can make it handle worse than standard.</p></div>
+          <div class="nextcard"><h4>Track day preparation</h4><p>What to check before a track day, how to read tyre temperatures and wear, and why brake fluid and oil level matter more than power.</p></div>
+        </div>
+
+        <p>Pick whichever of those you're most curious about and it can become the next section of this guide.</p>
+      </section>
+
+      <footer>
+        <p><strong>Know Your 86 &amp; BRZ</strong> — a beginner's guide to car mechanicals, written around the first-generation Toyota 86 (ZN6) and Subaru BRZ (ZC6), 2012–2021.</p>
+        <p>Engine and chassis figures are the manufacturers' published specifications for the first-generation car. Recall details come from Toyota New Zealand's November 2018 notice, Subaru's WTY-84 campaign filings, and the Australian vehicle recalls register; build-date windows differ by brand and market, so your VIN is the only reliable check. Suspension tuning differences are drawn from launch-period road tests and the makers' own comparisons. Power and torque curve shapes in the graph are indicative, not measured. Fluid specifications and service intervals vary by market and model year: your owner's manual and the placard in your door jamb are the authority for your specific car.</p>
+        <p>All illustrations are original line drawings, simplified to show principles rather than exact part shapes. Nothing here replaces a qualified mechanic for work on brakes, steering or structure.</p>
+      </footer>
+
+    </div>
+  </main>
+</div>
+
+<script>
+(function(){
+  "use strict";
+  var sections = Array.prototype.slice.call(document.querySelectorAll("section[data-nav]"));
+  var railnav = document.getElementById("railnav");
+  var mobstrip = document.getElementById("mobstrip");
+
+  sections.forEach(function(sec, i){
+    var num = String(i + 1).padStart(2, "0");
+    var label = sec.getAttribute("data-nav");
+
+    var a = document.createElement("a");
+    a.href = "#" + sec.id;
+    a.innerHTML = '<span class="n">' + num + '</span><span>' + label + '</span>';
+    a.dataset.target = sec.id;
+    railnav.appendChild(a);
+
+    var b = document.createElement("a");
+    b.href = "#" + sec.id;
+    b.textContent = label;
+    b.dataset.target = sec.id;
+    mobstrip.appendChild(b);
+  });
+
+  var links = Array.prototype.slice.call(document.querySelectorAll("[data-target]"));
+
+  function setActive(id){
+    links.forEach(function(l){
+      var on = l.dataset.target === id;
+      l.classList.toggle("on", on);
+      if (on && l.parentNode === mobstrip) {
+        var sl = l.offsetLeft - 16;
+        if (Math.abs(mobstrip.scrollLeft - sl) > 40) {
+          mobstrip.scrollTo({ left: sl, behavior: "smooth" });
+        }
+      }
+    });
+  }
+
+  if ("IntersectionObserver" in window) {
+    var visible = {};
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){ visible[e.target.id] = e.isIntersecting ? e.intersectionRatio : 0; });
+      var best = null, bestVal = 0;
+      sections.forEach(function(s){
+        var v = visible[s.id] || 0;
+        if (v > bestVal) { bestVal = v; best = s.id; }
+      });
+      if (best) setActive(best);
+    }, { rootMargin: "-15% 0px -55% 0px", threshold: [0, 0.15, 0.4, 0.75, 1] });
+    sections.forEach(function(s){ io.observe(s); });
+  }
+  setActive(sections[0].id);
+
+  var gq = document.getElementById("gq");
+  var items = Array.prototype.slice.call(document.querySelectorAll("#glist .gitem"));
+  var gempty = document.getElementById("gempty");
+  if (gq) {
+    gq.addEventListener("input", function(){
+      var q = gq.value.trim().toLowerCase();
+      var shown = 0;
+      items.forEach(function(it){
+        var hit = q === "" || it.textContent.toLowerCase().indexOf(q) !== -1;
+        it.hidden = !hit;
+        if (hit) shown++;
+      });
+      gempty.hidden = shown !== 0;
+    });
+  }
+})();
+</script>
+</body>
+</html>
